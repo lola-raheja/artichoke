@@ -1,0 +1,15 @@
+<div class="container">
+  <h1><%= @collection.title %></h1>
+  <% @artworks.each do |artwork| %>
+    <div class="row">
+      <div class="col-md-4">
+        <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
+      </div>
+      <div class="col-md-8">
+        <h3><%= artwork.title %></h3>
+        <p><%= artwork.price %></p>
+        <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
