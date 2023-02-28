@@ -1,15 +1,22 @@
 <div class="container">
   <h1><%= @collection.title %></h1>
-  <% @artworks.each do |artwork| %>
     <div class="row">
       <div class="col-md-4">
-        <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
+        <%= simple_form_for(@collection.artworks, url: collection_path(@collection), method: :get) do |f| %>
+          <%= f.collection_check_boxes :medium, [["painting", "painting"], ["photography", "photography"]], :last, :first %>
+          <%= f.collection_check_boxes :location, [["London", "London"], ["Berlin", "Berlin"]], :last, :first %>
+          <%= f.submit "Filter" %>
+        <% end %>
       </div>
-      <div class="col-md-8">
-        <h3><%= artwork.title %></h3>
-        <p><%= artwork.price %></p>
-        <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
-      </div>
+      <% @artworks.each do |artwork| %>
+        <div class="col-md-4">
+          <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
+        </div>
+        <div class="col-md-4">
+          <h3><%= artwork.title %></h3>
+          <p><%= artwork.price %></p>
+          <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
