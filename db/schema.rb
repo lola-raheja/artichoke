@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_25_163251) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_100128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_163251) do
   create_table "artwork_collections", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "artwork_id", null: false
+    t.bigint "collection_id", null: false
+    t.index ["artwork_id"], name: "index_artwork_collections_on_artwork_id"
+    t.index ["collection_id"], name: "index_artwork_collections_on_collection_id"
   end
 
   create_table "artworks", force: :cascade do |t|
@@ -88,5 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_163251) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "artwork_collections", "artworks"
+  add_foreign_key "artwork_collections", "collections"
   add_foreign_key "artworks", "users"
 end
