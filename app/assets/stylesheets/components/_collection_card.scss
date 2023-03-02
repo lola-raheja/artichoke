@@ -1,18 +1,60 @@
-.card-container-homepage {
-  border-color: red;
-  background-color: blue;
+.page-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-// .collection-card-big {
-//   // position: absolute;
-//   // width: 800px;
-//   // height: 640px;
-//   // left: 73px;
-//   // top: 192px;
-//   // border: red;
+.card-container-homepage {
+  display: flex;
+  margin-bottom: 2rem;
+  width: 100%;
+  justify-content: space-around;
+}
 
-//   // background: "https://mollybright.com/wp-content/uploads/2022/10/22890414673_6d5c32cfec_o.jpg";
-//   // border-radius: 4px;
-// }
+.collection-card-big {
+  position: relative;
+  height: 50%;
+}
 
-////==================Small cards for portrait images=========================////
+.collection-card-big img {
+  border-radius: 16px;
+  padding: 4px;
+}
+
+.collection-card-big h2 {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.collection-card-big img:hover{
+  background-color: $artichoke-purple;
+  opacity: 35%;
+  .text-content {
+    display: block;
+  }
+}
+
+.collection-card-small {
+  position: relative;
+  height: 100%;
+}
+
+.collection-card-small img {
+  border-radius: 16px;
+  height: 100%;
+  object-fit: cover;
+  padding:4px;
+}
+
+.collection-card-small h2 {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.text-content {
+  position:absolute;
+  top: 0;
+  left: 0;
+}
