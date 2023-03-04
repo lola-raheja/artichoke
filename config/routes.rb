@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :artworks, only: :show do
     resources :bids, only: %i[create destroy update]
   end
+  resources :users, only: :show
 end
