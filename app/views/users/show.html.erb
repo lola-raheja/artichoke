@@ -1,0 +1,22 @@
+<%= @user.first_name %> <%= @user.last_name %>
+<%= @user.nationality %>
+<%= @user.date_of_birth%>
+<%= @user.location %>
+<%= @user.degree %>
+<% @artworks.each do |artwork| %>
+  <%= link_to(artwork_path(artwork)) do %>
+    <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
+    <h3><%#= artwork.title %></h3>
+    <p><%#= artwork.price %></p>
+  <% end %>
+<% end %>
+
+
+
+
+
+
+<%# needs user profile image %>
+<%# needs user portfoilio %>
+<%# needs past exhibitions %>
+<%# needs user artworks - in grid format, slider if poss %>
