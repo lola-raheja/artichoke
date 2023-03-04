@@ -1,0 +1,12 @@
+
+<h1><%= @artwork.title %></h1>
+<p><%= cl_image_tag @artwork.photo.key, height: 300, width: 400, crop: :fill %>
+<br><%= @artwork.user.first_name %><%= @artwork.user.last_name %>
+<br><%= @artwork.user.date_of_birth %>
+<br><%= @artwork.user.location %>
+<br><%= @artwork.user.degree %></p>
+<p><%= @artwork.price %>
+<p><%= @artwork.medium %>
+<p><%= @artwork.material %>
+<p><%= @artwork.height %>
+<p><%= @artwork.width %>
