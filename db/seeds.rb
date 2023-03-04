@@ -14,7 +14,8 @@ Collection.destroy_all
 ArtworkCollection.destroy_all
 
 puts "Creating user..."
-joey = User.create!(first_name: "Joey", last_name: "Artist", email: "joeyartist@email.com", password: "123456")
+joey = User.create!(first_name: "Joey", last_name: "Artist", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I'm a painter", date_of_birth: "1988-01-01", location: "London")
+jan = User.create!(first_name: "Jan", last_name: "Photographer", email: "janphotographer@email.com", password: "123456", nationality: "Slovakian", bio: "I'm a photographer", date_of_birth: "1990-01-01", location: "Berlin")
 
 puts "Creating collections..."
 first_collection = Collection.new(title: "New & Noteworthy", description: "The crème de la crème of the newest Artichoke additions")
@@ -35,10 +36,10 @@ fourth_collection.photo.attach(io: file, filename: "fourth_collection.png", cont
 fourth_collection.save!
 
 puts "Creating art..."
-mona = { title: "Mona Lisa", price: 100, user: joey }
-scream = { title: "The Scream", price: 200, user: joey }
-pitchfork = { title: "American Gothic", price: 300, user: joey }
-diners = { title: "Nighthawks", price: 400, user: joey }
+mona = { title: "Mona Lisa", price: 100, user: joey, medium: "painting", height: 77, width: 53, year: "1503-01-01", material: "Oil on poplar panel" }
+scream = { title: "The Scream", price: 200, user: joey, medium: "painting", height: 91, width: 73, year: "1893-01-01", material: "Oil, tempera, pastel and crayon on cardboard" }
+pitchfork = { title: "American Gothic", price: 300, user: jan, medium: "photography", height: 74, width: 62, year: "1930-01-01", material: "Oil on beaverboard" }
+diners = { title: "Nighthawks", price: 400, user: jan, medium: "photography", height: 84, width: 152, year: "1942-01-01", material: "Oil on canvas" }
 
 [mona, scream, pitchfork, diners].each do |attributes|
   artwork = Artwork.new(attributes)
