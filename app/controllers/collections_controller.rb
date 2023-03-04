@@ -1,10 +1,6 @@
 class CollectionsController < ApplicationController
   def show
     @collection = Collection.find(params[:id])
-    @collection1 = Collection.find(params[1])
-    @collection2 = Collection.find(params[2])
-    @collection3 = Collection.find(params[3])
-    @collection4 = Collection.find(params[4])
 
     @artworks = @collection.artworks
     if params[:medium].present?
