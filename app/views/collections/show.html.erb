@@ -10,13 +10,13 @@
           <div>
             <%= label_tag(:price, 'Filter by price:') %>
             <%= select_tag(:price, options_for_select([
-                                                      ['Under £100', '0,99'],
-                                                      ['£100 - £200', '100,200'],
-                                                      ['£200 - £300', '200,300'],
-                                                      ['£300 - £400', '300,400'],
-                                                      ['£400 - £500', '400,500'],
-                                                      ['Over £500', '500,999999999']
-                                                      ], params[:price]), include_blank: true) %>
+              ['Under £100', '0,99'],
+              ['£100 - £200', '100,200'],
+              ['£200 - £300', '200,300'],
+              ['£300 - £400', '300,400'],
+              ['£400 - £500', '400,500'],
+              ['Over £500', '500,999999999']
+            ], params[:price]), include_blank: true) %>
           </div>
           <div>
             <%= label_tag(:size, 'Filter by size:') %>
@@ -29,10 +29,12 @@
       <p><%= pluralize @artworks.count, "result" %></p>
       <% @artworks.each do |artwork| %>
         <div class="col-md-4">
-          <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
-          <h3><%= artwork.title %></h3>
-          <p><%= artwork.price %></p>
-          <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+          <%= link_to artwork_path(artwork) do %>
+            <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
+            <h3><%= artwork.title %></h3>
+            <p><%= artwork.price %></p>
+            <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+          <% end %>
         </div>
       <% end %>
     </div>

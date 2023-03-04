@@ -1,0 +1,37 @@
+<!-- Button trigger modal -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2><%= @artwork.title %></h2>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bidModal">
+  Place a bid
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="bidModal" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="bidModalLabel">Place a bid</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@artwork, @bid] do |f| %>
+            <div class="mb-3">
+              <p>Highest bid:</p>
+              <p class="lead"><%= @artwork.bids.maximum(:amount) %></p>
+            </div>
+            <div class="mb-3">
+              <%= f.input :amount, class: "col-form-label" %>
+            </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <%= f.submit "Submit bid", class: "btn btn-primary" , data_bs_dismiss: "modal" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
