@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row pb-4" style="height: 400px;">
       <% @collections[0..1].each_with_index do |collection, index| %>
-        <div class="<%=index == 0 ? "collection-card-big col-7" : "collection-card-small col-5" %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path collection.photo.key, height: 300, crop: :fill %>')">
+        <div class="<%=index == 0 ? "collection-card-big col-7" : "collection-card-small col-5" %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path collection.photo.key, crop: :fill %>')">
           <h2><%= collection.title %></h2>
           <div class="text-content" style="display:none">
             <p><%= collection.description %></p>
@@ -12,7 +12,7 @@
     </div>
     <div class="row" style="height: 400px;">
       <% @collections[2..3].each_with_index do |collection, index| %>
-        <div class="<%=index == 0 ? "collection-card-small col-5" : "collection-card-big col-7" %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path collection.photo.key, height: 300, crop: :fill %>')">
+        <div class="<%=index == 0 ? "collection-card-small col-5" : "collection-card-big col-7" %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path collection.photo.key, crop: :fill %>')">
           <h2><%= collection.title %></h2>
           <div class="text-content" style="display:none">
             <p><%= collection.description %></p>

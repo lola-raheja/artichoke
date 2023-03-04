@@ -12,6 +12,7 @@ Artwork.destroy_all
 User.destroy_all
 Collection.destroy_all
 ArtworkCollection.destroy_all
+Bid.destroy_all
 
 puts "Creating user..."
 joey = User.create!(first_name: "Joey", last_name: "Artist", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I'm a painter", date_of_birth: "1988-01-01", location: "London")
