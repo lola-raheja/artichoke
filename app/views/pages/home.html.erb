@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Artichoke</h1>
+<% @collections.each do |collection| %>
+<%= link_to "collection", collection_path(collection) %>
+<p><%= collection.title %></p>
+<p><%= cl_image_tag collection.photo.key, height: 300, width: 400, crop: :fill %></p>
+<p><%= collection.description %></p>
+<% end %>
