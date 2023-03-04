@@ -1,25 +1,24 @@
 <div class="page-container page-margin">
-  <div class="card-container-homepage container">
-    <div class="collection-card-big row col-7">
-      <img src="https://mollybright.com/wp-content/uploads/2022/10/22890414673_6d5c32cfec_o.jpg">
-      <h2>New & Noteworthy</h2>
-      <div class="text-content" style="display:none">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium fuga natus aperiam esse dolorum delectus voluptatum iure aspernatur doloremque, aliquam nostrum ipsa debitis optio saepe quos! Natus magnam harum tenetur.</p>
-      </div>
+  <div class="container">
+    <div class="row pb-4" style="height: 400px;">
+      <% @collections[0..1].each_with_index do |collection, index| %>
+        <div class="<%=index == 0 ? "collection-card-big col-7" : "collection-card-small col-5" %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path collection.photo.key, height: 300, crop: :fill %>')">
+          <h2><%= collection.title %></h2>
+          <div class="text-content" style="display:none">
+            <p><%= collection.description %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="collection-card-small row col-5">
-      <img src="https://mollybright.com/wp-content/uploads/2022/10/22890414673_6d5c32cfec_o.jpg">
-      <h2>Bold Bids $1000+</h2>
-    </div>
-  </div>
-  <div class="card-container-homepage container">
-    <div class="collection-card-small row col-5">
-      <img src="https://mollybright.com/wp-content/uploads/2022/10/22890414673_6d5c32cfec_o.jpg">
-      <h2>Gems Under $500</h2>
-    </div>
-    <div class="collection-card-big row col-7">
-      <img src="https://mollybright.com/wp-content/uploads/2022/10/22890414673_6d5c32cfec_o.jpg">
-      <h2>Gallery Repped Artists</h2>
+    <div class="row" style="height: 400px;">
+      <% @collections[2..3].each_with_index do |collection, index| %>
+        <div class="<%=index == 0 ? "collection-card-small col-5" : "collection-card-big col-7" %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path collection.photo.key, height: 300, crop: :fill %>')">
+          <h2><%= collection.title %></h2>
+          <div class="text-content" style="display:none">
+            <p><%= collection.description %></p>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
