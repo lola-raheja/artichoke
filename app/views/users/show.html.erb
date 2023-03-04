@@ -1,8 +1,11 @@
-<%= @user.first_name %> <%= @user.last_name %>
-<%= @user.nationality %>
-<%= @user.date_of_birth%>
-<%= @user.location %>
-<%= @user.degree %>
+<h1>Artist Show Page</h1>
+<h2><%= @user.first_name %> <%= @user.last_name %>
+<br><%= @user.nationality %>
+<br><%= @user.date_of_birth%>
+<br><%= @user.location %>
+<br><%= @user.degree %>
+<br> <%= @user.bio %></h2>
+<br>
 <% @artworks.each do |artwork| %>
   <%= link_to(artwork_path(artwork)) do %>
     <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
