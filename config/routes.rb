@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :collections, only: %i[show]
   resources :artworks, only: :show
+  resources :users, only: :show
 end
