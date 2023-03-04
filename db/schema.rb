@@ -62,7 +62,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_144924) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "end_time"
     t.index ["user_id"], name: "index_artworks_on_user_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer "amount"
+    t.bigint "user_id", null: false
+    t.bigint "artwork_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_bids_on_artwork_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -106,4 +117,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_144924) do
   add_foreign_key "artwork_collections", "artworks"
   add_foreign_key "artwork_collections", "collections"
   add_foreign_key "artworks", "users"
+  add_foreign_key "bids", "artworks"
+  add_foreign_key "bids", "users"
 end

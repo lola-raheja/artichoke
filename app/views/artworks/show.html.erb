@@ -1,12 +1,55 @@
+<%= simple_form_for [@artwork, @bid] do |f| %>
+  <%= f.input :amount %>
+  <%= f.submit "Submit bid", class: "btn btn-primary" %>
+<% end %>
 
 <h1><%= @artwork.title %></h1>
-<p><%= cl_image_tag @artwork.photo.key, height: 300, width: 400, crop: :fill %>
+<p><%= cl_image_tag @artwork.photo.key, height: 500, crop: :fill %>
 <br><%= @artwork.user.first_name %><%= @artwork.user.last_name %>
 <br><%= @artwork.user.date_of_birth %>
 <br><%= @artwork.user.location %>
 <br><%= @artwork.user.degree %></p>
-<p><%= @artwork.price %>
+<p>
+  <% if @artwork.bids.exists? %>
+    Current highest bid: <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %>
+  <% else %>
+    Starting price: <%= number_to_currency(@artwork.price, unit: "£", precision: 0) %>
+  <% end %>
+</p>
 <p><%= @artwork.medium %>
 <p><%= @artwork.material %>
 <p><%= @artwork.height %>
 <p><%= @artwork.width %>
+<p><%= @artwork.end_time %>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bidModal">
+  Place a bid
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="bidModal" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="bidModalLabel">Place a bid</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@artwork, @bid] do |f| %>
+            <div class="mb-3">
+              <p>Highest bid:</p>
+              <p class="lead"><%= @artwork.bids.maximum(:amount) %></p>
+            </div>
+            <div class="mb-3">
+              <%= f.input :amount, class: "col-form-label" %>
+            </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <%= f.submit "Submit bid", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
