@@ -1,38 +1,55 @@
 <h1><%= @collection.title %></h1>
 
-<div class="row">
-  <div class="col-md-4">
-    <%= form_tag(collection_path(@collection), method: :get) do %>
-      <div>
-        <%= label_tag(:medium, 'Filter by medium:') %>
-        <%= select_tag(:medium, options_for_select(@collection.artworks.pluck(:medium).uniq, params[:medium]), include_blank: true) %>
-      </div>
-      <div>
-        <%= label_tag(:price, 'Filter by price:') %>
-        <%= select_tag(:price, options_for_select([
-          ['Under £100', '0,99'],
-          ['£100 - £200', '100,200'],
-          ['£200 - £300', '200,300'],
-          ['£300 - £400', '300,400'],
-          ['£400 - £500', '400,500'],
-          ['Over £500', '500,999999999']
-        ], params[:price]), include_blank: true) %>
-      </div>
-      <div>
-        <%= label_tag(:size, 'Filter by size:') %>
-        <%= select_tag(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
-      </div>
+
+
+<%= form_tag(collection_path(@collection), method: :get) do %>
+  <div class="row text-center">
+    <div class="col">
+      <%= label_tag(:user_location, "Location:") %>
+      <%= select_tag(:user_location, options_for_select(@collection.artworks.joins(:user).pluck(:location).uniq, params[:user_location]), include_blank: true) %>
+    </div>
+    <div class="col">
+      <%= label_tag(:medium, 'Medium:') %>
+      <%= select_tag(:medium, options_for_select(@collection.artworks.pluck(:medium).uniq, params[:medium]), include_blank: true) %>
+    </div>
+    <div class="col">
+      <%= label_tag(:price, 'Price:') %>
+      <%= select_tag(:price, options_for_select([
+        ['Under £100', '0,99'],
+        ['£100 - £200', '100,200'],
+        ['£200 - £300', '200,300'],
+        ['£300 - £400', '300,400'],
+        ['£400 - £500', '400,500'],
+        ['Over £500', '500,999999999']
+      ], params[:price]), include_blank: true) %>
+    </div>
+    <div class="col">
+      <%= label_tag(:size, 'Size:') %>
+      <%= select_tag(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
+    </div>
+    <div class="col">
       <%= submit_tag "Filter" %>
-    <% end %>
+    </div>
   </div>
-  <p><%= pluralize @artworks.count, "result" %></p>
+<% end %>
+
+<p><%= pluralize @artworks.count, "result" %></p>
+<div class="row">
   <% @artworks.each do |artwork| %>
-    <div class="col-md-4">
+    <div class="col-4">
       <%= link_to artwork_path(artwork) do %>
-        <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill %>
-        <h3><%= artwork.title %></h3>
-        <p><%= artwork.price %></p>
-        <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+        <div class="row text-center">
+          <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+          <div class="col">
+            <p><%= artwork.title %></p>
+          </div>
+          <div class="col">
+            <p><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
+          </div>
+          <div class = "col">
+            <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+          </div>
+        </div>
       <% end %>
     </div>
   <% end %>

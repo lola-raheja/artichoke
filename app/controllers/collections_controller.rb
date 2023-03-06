@@ -3,6 +3,9 @@ class CollectionsController < ApplicationController
     @collection = Collection.find(params[:id])
 
     @artworks = @collection.artworks
+    if params[:user_location].present?
+      @artworks = @artworks.joins(:user).where(users: { location: params[:user_location] })
+    end
     if params[:medium].present?
       @artworks = @artworks.where(medium: params[:medium])
     end
