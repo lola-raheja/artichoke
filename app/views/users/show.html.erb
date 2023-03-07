@@ -1,15 +1,44 @@
-<%= @user.first_name %> <%= @user.last_name %>
-<%= @user.nationality %>
-<%= @user.date_of_birth%>
-<%= @user.location %>
-<%= @user.degree %>
-<% @artworks.each do |artwork| %>
-  <%= link_to(artwork_path(artwork)) do %>
-    <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
-    <h3><%#= artwork.title %></h3>
-    <p><%#= artwork.price %></p>
-  <% end %>
-<% end %>
+<div class="user-profile">
+  <div class="user-name">
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <h2><%= @user.nationality %></h2>
+    <h3><%= @user.date_of_birth %></h3>
+    <h4><%= @user.location %></h4>
+    <h4><%= @user.bio %></h4>
+  </div>
+
+  <div class="artworks">
+    <h2>My artworks</h2>
+      <% @artworks.each do |artwork| %>
+        <div class="artwork">
+          <%= link_to(artwork_path(artwork)) do %>
+            <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
+          <% end %>
+          <h3><%= artwork.title %></h3>
+          <% if artwork.bids.exists? %>
+        <%= number_to_currency(artwork.bids.maximum(:amount), unit: "£", precision: 0) %> <small class="text-muted">(highest bid)</small>
+      <% else %>
+        <%= number_to_currency(artwork.price, unit: "£", precision: 0) %> <small class="text-muted">(starting price)</small>
+      <% end %>
+
+        </div>
+      <% end %>
+  </div>
+
+  <div class="bids-list">
+    <h2>My bids</h2>
+    <% if @user.bids.any? %>
+      <% @user.bids.each do |bid| %>
+        <div class="bid">
+          <%= cl_image_tag bid.artwork.photo.key, width: 400, height: 300, crop: :fill %>
+          <h3><%= bid.artwork.title %></h3>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No bids found.</p>
+    <% end %>
+  </div>
+</div>
 
 
 

@@ -15,8 +15,13 @@ ArtworkCollection.destroy_all
 Bid.destroy_all
 
 puts "Creating user..."
-joey = User.create!(first_name: "Joey", last_name: "Artist", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I'm a painter", date_of_birth: "1988-01-01", location: "London")
-jan = User.create!(first_name: "Jan", last_name: "Photographer", email: "janphotographer@email.com", password: "123456", nationality: "Slovakian", bio: "I'm a photographer", date_of_birth: "1990-01-01", location: "Berlin")
+joey = User.new(first_name: "Joey", last_name: "Artist", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I'm a painter", date_of_birth: "1988-01-01", location: "London")
+file = URI.open("https://source.unsplash.com/random/?male%20face")
+joey.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
+joey.save!
+jan = User.new(first_name: "Jan", last_name: "Photographer", email: "janphotographer@email.com", password: "123456", nationality: "Slovakian", bio: "I'm a photographer", date_of_birth: "1990-01-01", location: "Berlin")
+file = URI.open("https://source.unsplash.com/random/?male%20face")
+jan.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
 
 puts "Creating collections..."
 first_collection = Collection.new(title: "New & Noteworthy", description: "The crème de la crème of the newest Artichoke additions")
@@ -37,14 +42,14 @@ fourth_collection.photo.attach(io: file, filename: "fourth_collection.png", cont
 fourth_collection.save!
 
 puts "Creating art..."
-mona = { title: "Mona Lisa", price: 100, user: joey, medium: "painting", height: 77, width: 53, year: "1503-01-01", material: "Oil on poplar panel" }
-scream = { title: "The Scream", price: 200, user: joey, medium: "painting", height: 91, width: 73, year: "1893-01-01", material: "Oil, tempera, pastel and crayon on cardboard" }
-pitchfork = { title: "American Gothic", price: 300, user: jan, medium: "photography", height: 74, width: 62, year: "1930-01-01", material: "Oil on beaverboard" }
-diners = { title: "Nighthawks", price: 400, user: jan, medium: "photography", height: 84, width: 152, year: "1942-01-01", material: "Oil on canvas" }
+mona = { title: "Mona Lisa", price: 90, user: joey, medium: "painting", height: 77, width: 53, year: "1503-01-01", material: "Oil on poplar panel", end_time: "2023-03-09 23:59:59" }
+scream = { title: "The Scream", price: 450, user: joey, medium: "painting", height: 91, width: 73, year: "1893-01-01", material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-08 23:59:59" }
+pitchfork = { title: "American Gothic", price: 150, user: jan, medium: "photography", height: 74, width: 62, year: "1930-01-01", material: "Oil on beaverboard", end_time: "2023-03-16 23:59:59" }
+diners = { title: "Nighthawks", price: 510, user: jan, medium: "photography", height: 84, width: 152, year: "1942-01-01", material: "Oil on canvas", end_time: "2023-03-16 23:59:59" }
 
 [mona, scream, pitchfork, diners].each do |attributes|
   artwork = Artwork.new(attributes)
-  file = URI.open("https://source.unsplash.com/random/?#{attributes[:title]}")
+  file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
   artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
   artwork.save!
   puts "Created #{artwork.title}"

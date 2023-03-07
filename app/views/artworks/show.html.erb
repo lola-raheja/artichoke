@@ -1,22 +1,30 @@
 <div class="row">
   <div class="col-7">
-    <p><%= cl_image_tag @artwork.photo.key, height: 500, crop: :fill %>
+    <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-height: calc(80vh); max-width: 100%;" %>
   </div>
   <div class="col-5">
     <h2><%= @artwork.user.first_name %> <%= @artwork.user.last_name %></h2>
-    <h3><%= @artwork.title %></h3>
-    <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
+    <h3><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h3>
     <p><%= @artwork.material %></p>
+    <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
 
-    <p>
+    <h4>
       <% if @artwork.bids.exists? %>
-        Current highest bid: <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %>
+        <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %> <small class="text-muted">(highest bid)</small>
       <% else %>
-        Starting price: <%= number_to_currency(@artwork.price, unit: "£", precision: 0) %>
+        <%= number_to_currency(@artwork.price, unit: "£", precision: 0) %> <small class="text-muted">(starting price)</small>
+      <% end %>
+    </h4>
+      <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
+    <p>
+      <% if @artwork.end_time.present? && @artwork.end_time.future? %>
+        <% if @artwork.end_time.to_date == Time.zone.today %>
+          <%= "Auction ends today at #{@artwork.end_time.strftime("%H:%M")}" %>
+        <% else %>
+          <%= "Auction ends at #{@artwork.end_time.strftime("%H:%M on %d %B")}" %>
+        <% end %>
       <% end %>
     </p>
-    <p><%= @artwork.end_time %></p>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
     <%#= simple_form_for [@artwork, @bid] do |f| %>
       <%#= f.input :amount, input_html: { style: 'width: 300px;' } %>
       <%#= f.submit "Submit bid", class: "btn btn-primary" %>
@@ -35,8 +43,7 @@
       <div class="modal-body">
         <%= simple_form_for [@artwork, @bid] do |f| %>
           <div class="mb%>-3">
-            <p>Highest bid:</p>
-            <p class="lead"><%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
+            <p class="lead">Highest bid: <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
           </div>
           <div class="mb-3">
             <%= f.input :amount, class: "col-form-label" %>
@@ -47,6 +54,6 @@
           <%= f.submit "Submit bid", class: "btn btn-primary" %>
         <% end %>
       </div>
-     </div>
+    </div>
   </div>
 </div>
