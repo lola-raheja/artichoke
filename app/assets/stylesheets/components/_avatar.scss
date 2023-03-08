@@ -9,11 +9,18 @@
   cursor: pointer;
 }
 
+.avatar-medium {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+
 .avatar-large {
   width: 400px;
   height: 400px;
   border-radius: 50%;
 }
+
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
