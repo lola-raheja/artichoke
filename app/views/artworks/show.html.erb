@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-7">
+  <div class="col-6 me-auto text-center">
     <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-height: calc(80vh); max-width: 100%;" %>
   </div>
-  <div class="col-5">
+  <div class="col-4 me-auto">
     <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}", @artwork.user %></h2>
     <div class="d-flex align-items-center">
       <div class="p-2">
@@ -11,7 +11,9 @@
       <div class="p-2">
         <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
         <p>Location: <%= @artwork.user.location %></p>
-        <%= link_to "Message #{@artwork.user.first_name}", @artwork.user, class: "btn btn-primary" %>
+        <% if @artwork.user != current_user %>
+          <%= link_to "Message #{@artwork.user.first_name}", @artwork.user, class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
     <h3><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h3>
@@ -52,17 +54,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for [@artwork, @bid] do |f| %>
-          <div class="mb%>-3">
-            <p class="lead">Highest bid: <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
-          </div>
-          <div class="mb-3">
-            <%= f.input :amount, class: "col-form-label" %>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <%= f.submit "Submit bid", class: "btn btn-primary" %>
+        <%= simple_form_for [@artwork, @bid], html: {class: "d-flex"} do |f| %>
+          <%= f.input :amount,
+              label: false,
+              placeholder: "Highest bid: #{number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0)}",
+              wrapper_html: {class: "flex-grow-1 me-3"}
+          %>
+          <%= f.submit "Submit bid", class: "btn btn-primary mb-3" %>
         <% end %>
       </div>
     </div>
