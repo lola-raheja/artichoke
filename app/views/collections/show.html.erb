@@ -47,9 +47,9 @@
             <div class="row">
               <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
               <div class="artwork-card-info">
-                <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
-                <p><%= artwork.title %></p>
-                <p><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
+                <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+                <p class="artwork-title"><%= artwork.title %></p>
+                <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
               </div>
             </div>
           <% end %>

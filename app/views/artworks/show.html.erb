@@ -3,7 +3,7 @@
     <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-height: calc(80vh); max-width: 100%;" %>
   </div>
   <div class="col-5">
-    <h2><%= @artwork.user.first_name %> <%= @artwork.user.last_name %></h2>
+    <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}", @artwork.user %></h2>
     <h3><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h3>
     <p><%= @artwork.material %></p>
     <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
