@@ -22,6 +22,7 @@ joey.save!
 jan = User.new(first_name: "Jan", last_name: "Photographer", email: "janphotographer@email.com", password: "123456", nationality: "Slovakian", bio: "I'm a photographer", date_of_birth: "1990-01-01", location: "Berlin")
 file = URI.open("https://source.unsplash.com/random/?male%20face")
 jan.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
+jan.save!
 
 puts "Creating collections..."
 first_collection = Collection.new(title: "New & Noteworthy", description: "The crème de la crème of the newest Artichoke additions")
