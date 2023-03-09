@@ -21,7 +21,6 @@ file = URI.open("https://source.unsplash.com/random/?male%20face")
 pat.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
 pat.save!
 
-
 david_boatwright = User.create!(first_name: "David", last_name: "Boatwright", email: "luckyboyart@email.com",
   password: "123456", nationality: "American",
   bio: "David Boatwright is a painter, known for his murals, as well as a musician and filmmaker.
