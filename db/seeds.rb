@@ -78,6 +78,7 @@ file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/img-0348_or
 funk.photo.attach(io: file, filename: "no_dice.jpg", content_type: "image/jpg")
 funk.save!
 
-ArtworkCollection.create!(artwork: funk, eleven_dollars, six_dollars, i_aint_know, no_dice, collection: first_collection)
+artwork1 = [funk, eleven_dollars, six_dollars, i_aint_know, no_dice]
+ArtworkCollection.create!(artwork: artwork1, collection: first_collection)
 
 puts "Finished!"
