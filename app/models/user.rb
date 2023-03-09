@@ -4,7 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :artworks
-
-  include PgSearch::Model
-  multisearchable against: [:first_name, :last_name, :nationality, :location]
+  has_many :bids
 end
