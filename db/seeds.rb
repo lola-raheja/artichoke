@@ -12,6 +12,7 @@ Artwork.destroy_all
 User.destroy_all
 Collection.destroy_all
 ArtworkCollection.destroy_all
+Bid.destroy_all
 
 puts "Creating users..."
 

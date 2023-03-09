@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_02_184129) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_04_175031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_184129) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "end_time"
     t.index ["user_id"], name: "index_artworks_on_user_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer "amount"
+    t.bigint "user_id", null: false
+    t.bigint "artwork_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artwork_id"], name: "index_bids_on_artwork_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -96,6 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_184129) do
     t.date "date_of_birth"
     t.string "degree"
     t.string "location"
+    t.string "user_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -105,4 +117,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_02_184129) do
   add_foreign_key "artwork_collections", "artworks"
   add_foreign_key "artwork_collections", "collections"
   add_foreign_key "artworks", "users"
+  add_foreign_key "bids", "artworks"
+  add_foreign_key "bids", "users"
 end

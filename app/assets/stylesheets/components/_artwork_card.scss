@@ -1,0 +1,30 @@
+.zoomable {
+  transition: transform .2s;
+}
+
+.zoomable:hover {
+  transform: scale(1.01);
+}
+
+.artwork-card-info {
+  padding: 10px;
+  line-height: 1.5em;
+}
+
+.artwork-card-info p {
+  margin-bottom: 0;
+}
+
+.artwork-title {
+  font-style: italic;
+}
+
+.artwork-price {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.artwork-card-body a {
+  text-decoration: none;
+  color: inherit;
+}

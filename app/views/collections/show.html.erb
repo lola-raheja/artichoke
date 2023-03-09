@@ -1,39 +1,60 @@
-<div class="container">
-  <h1><%= @collection.title %></h1>
-    <div class="row">
-      <div class="col-md-4">
-        <%= form_tag(collection_path(@collection), method: :get) do %>
-          <div>
-            <%= label_tag(:medium, 'Filter by medium:') %>
-            <%= select_tag(:medium, options_for_select(@collection.artworks.pluck(:medium).uniq, params[:medium]), include_blank: true) %>
-          </div>
-          <div>
-            <%= label_tag(:price, 'Filter by price:') %>
-            <%= select_tag(:price, options_for_select([
-                                                      ['Under £100', '0,99'],
-                                                      ['£100 - £200', '100,200'],
-                                                      ['£200 - £300', '200,300'],
-                                                      ['£300 - £400', '300,400'],
-                                                      ['£400 - £500', '400,500'],
-                                                      ['Over £500', '500,999999999']
-                                                      ], params[:price]), include_blank: true) %>
-          </div>
-          <div>
-            <%= label_tag(:size, 'Filter by size:') %>
-            <%= select_tag(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
-          </div>
-          <%= submit_tag "Filter" %>
-        <% end %>
-
+<div class="row">
+  <div class="col-3">
+    <p class="lead">Filter by</p>
+    <%#= form_with url: collection_path(@collection), method: :get, class: "d-flex" do %>
+      <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "Keyword search" %>
+      <%#= submit_tag "Search", class: "btn btn-primary ms-2" %>
+    <%#å end %>
+    <%= form_with url: collection_path(@collection), method: :get do |f| %>
+      <div class="d-flex flex-column mb-3">
+        <div class="p-2">
+          <%= f.label(:user_location, "Location") %>
+          <%= f.select(:user_location, options_for_select(@collection.artworks.joins(:user).pluck(:location).uniq, params[:user_location]), include_blank: true) %>
+        </div>
+        <div class="p-2">
+          <%= f.label(:medium, "Medium") %>
+          <%= f.select(:medium, options_for_select(@collection.artworks.pluck(:medium).uniq, params[:medium]), include_blank: true) %>
+        </div>
+        <div class="p-2">
+          <%= f.label(:price, 'Price') %>
+          <%= f.select(:price, options_for_select([
+            ['Under £100', '0,99'],
+            ['£100 - £299', '100,299'],
+            ['£300 - £499', '300,499'],
+            ['£500 - £999', '500,999'],
+            ['£1000 - £1,499', '1000,1499'],
+            ['Over £1,500', '1500,999999999']
+          ], (params[:price])), include_blank: true) %>
+        </div>
+        <div class="p-2">
+          <%= f.label(:size, 'Size') %>
+          <%= f.select(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
+        </div>
+        <div class="p-2">
+          <%= f.submit "Filter", class: "btn btn-primary" %>
+        </div>
       </div>
-      <p><%= pluralize @artworks.count, "result" %></p>
+    <% end %>
+  </div>
+  <div class="col-9">
+    <h1><%= @collection.title %></h1>
+    <p class="lead"><%= @collection.description %></p>
+    <p><%= pluralize @artworks.count, "Artwork" %></p>
+    <div class="row">
       <% @artworks.each do |artwork| %>
-        <div class="col-md-4">
-          <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
-          <h3><%= artwork.title %></h3>
-          <p><%= artwork.price %></p>
-          <p><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+        <div class="col-4 artwork-card-body">
+          <%= link_to artwork_path(artwork) do %>
+            <div class="row">
+              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+              <div class="artwork-card-info">
+                <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+                <p class="artwork-title"><%= artwork.title %></p>
+                <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
+  </div>
 </div>
