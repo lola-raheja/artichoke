@@ -34,6 +34,11 @@ file = URI.open("https://bloximages.newyork1.vip.townnews.com/postandcourier.com
 david_boatwright.photo.attach(io: file, filename: "david_boatwright.jpg", content_type: "image/jpg")
 david_boatwright.save!
 
+joey = User.new(first_name: "Joe", last_name: "Hartley", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I love art!", date_of_birth: "1988-01-01", location: "London")
+file = URI.open("https://source.unsplash.com/random/?male%20face")
+joey.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
+joey.save!
+
 puts "Creating collections..."
 first_collection = Collection.new(title: "New & Noteworthy", description: "Our curators gather their top picks of the newest artists to join Artichoke.")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_orig.jpg")
@@ -84,7 +89,8 @@ file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/img-0348_or
 no_dice.photo.attach(io: file, filename: "no_dice.jpg", content_type: "image/jpg")
 no_dice.save!
 
-artwork1 = [funk, eleven_dollars, six_dollars, i_aint_know, no_dice]
-ArtworkCollection.create!(artwork: artwork1, collection: first_collection)
+[funk, eleven_dollars, six_dollars, i_aint_know, no_dice].each do |artwork|
+  ArtworkCollection.create!(artwork: artwork, collection: first_collection)
+end
 
 puts "Finished!"
