@@ -20,6 +20,7 @@ pat = User.create!(first_name: "Pat", last_name: "Patterson", email: "pat@email.
   "British", bio: "I'm Pat and I love hats and art.", date_of_birth: "1980-01-01", degree: "BA from UCL",
   location: "London")
 
+
 david_boatwright = User.create!(first_name: "David", last_name: "Boatwright", email: "luckyboyart@email.com",
   password: "123456", nationality: "American",
   bio: "David Boatwright is a painter, known for his murals, as well as a musician and filmmaker.
@@ -56,7 +57,7 @@ file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_ori
 first_collection.photo.attach(io: file, filename: "first_collection.png", content_type: "image/png")
 first_collection.save!
 second_collection = Collection.create!(title: "Bold Bids", description: "How much? These eyecatching pieces are causing a stir")
-file = URI.open("https://source.unsplash.com/random/?art")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517551885_9466035078_b.jpg")
 second_collection.photo.attach(io: file, filename: "second_collection.png", content_type: "image/png")
 second_collection.save!
 third_collection = Collection.create!(title: "Exhibiting Artists", description: "Showcasing the artists who are doing great things")
@@ -110,4 +111,44 @@ no_dice.save!
 ArtworkCollection.create!(artwork: no_dice, collection: first_collection)
 first_collection.save!
 
-puts "Finished!"
+puts "Finished David's artwork!"
+
+jesus = Artwork.new(title: "Jesus", price: 7500, user: molly_b_right, medium: "painting",
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23409048512_2962ce4fa4_b.jpg")
+jesus.photo.attach(io: file, filename: "jesus.jpg", content_type: "image/jpg")
+jesus.save!
+ArtworkCollection.create!(artwork: jesus, collection: second_collection)
+second_collection.save!
+
+mark_twain = Artwork.new(title: "Mark Twain", price: 7500, user: molly_b_right, medium: "painting",
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517553855_404d8d1ecd_o.jpg")
+mark_twain.photo.attach(io: file, filename: "mark_twain.jpg", content_type: "image/jpg")
+mark_twain.save!
+ArtworkCollection.create!(artwork: mark_twain, collection: second_collection)
+second_collection.save!
+
+amelia_earhart = Artwork.new(title: "Amelia Earhart", price: 7500, user: molly_b_right, medium: "painting",
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24022323322_78021decae_o.jpg")
+amelia_earhart.photo.attach(io: file, filename: "amelia_earhart.jpg", content_type: "image/jpg")
+amelia_earhart.save!
+ArtworkCollection.create!(artwork: amelia_earhart, collection: second_collection)
+second_collection.save!
+
+frida_kahlo = Artwork.new(title: "Frida Kahlo", price: 7500, user: molly_b_right, medium: "painting",
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517551885_9466035078_b.jpg")
+frida_kahlo.photo.attach(io: file, filename: "frida_kahlo.jpg", content_type: "image/jpg")
+frida_kahlo.save!
+ArtworkCollection.create!(artwork: frida_kahlo, collection: second_collection)
+second_collection.save!
+
+queen_elizabeth = Artwork.new(title: "Queen Elizabeth", price: 7500, user: molly_b_right, medium: "painting",
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24064125266_aa13a14a46_o.jpg")
+queen_elizabeth.photo.attach(io: file, filename: "queen_elizabeth.jpg", content_type: "image/jpg")
+queen_elizabeth.save!
+ArtworkCollection.create!(artwork: queen_elizabeth, collection: second_collection)
+second_collection.save!
