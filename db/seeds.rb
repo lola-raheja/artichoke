@@ -63,26 +63,26 @@ funk.save!
 eleven_dollars = Artwork.new(title: "Eleven Dollars", price: 5000, user: david_boatwright, medium: "painting",
   height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/2947265_orig.jpg")
-funk.photo.attach(io: file, filename: "eleven_dollars.jpg", content_type: "image/jpg")
-funk.save!
+eleven_dollars.photo.attach(io: file, filename: "eleven_dollars.jpg", content_type: "image/jpg")
+eleven_dollars.save!
 
 six_dollars = Artwork.new(title: "Six Dollars", price: 1000, user: david_boatwright, medium: "painting",
   height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9086013_orig.jpg")
-funk.photo.attach(io: file, filename: "six_dollars.jpg", content_type: "image/jpg")
-funk.save!
+six_dollars.photo.attach(io: file, filename: "six_dollars.jpg", content_type: "image/jpg")
+six_dollars.save!
 
-i_aint_know = Artwork.new(title: "I Ain't Know", price: 500, user: david_boatwright, medium: "print",
+i_aint_know = Artwork.new(title: "I Ain't Know", price: 500, user: david_boatwright, medium: "painting",
   height: 75, width: 100, year: "2020-01-01", material: "Limited edition giclee print", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_orig.jpg")
-funk.photo.attach(io: file, filename: "i_aint_know.jpg", content_type: "image/jpg")
-funk.save!
+i_aint_know.photo.attach(io: file, filename: "i_aint_know.jpg", content_type: "image/jpg")
+i_aint_know.save!
 
 no_dice = Artwork.new(title: "No Dice", price: 4500, user: david_boatwright, medium: "painting",
   height: 150, width: 200, year: "2017-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/img-0348_orig.jpeg")
-funk.photo.attach(io: file, filename: "no_dice.jpg", content_type: "image/jpg")
-funk.save!
+no_dice.photo.attach(io: file, filename: "no_dice.jpg", content_type: "image/jpg")
+no_dice.save!
 
 artwork1 = [funk, eleven_dollars, six_dollars, i_aint_know, no_dice]
 ArtworkCollection.create!(artwork: artwork1, collection: first_collection)
