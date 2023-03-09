@@ -16,9 +16,10 @@ Bid.destroy_all
 
 puts "Creating users..."
 
-pat = User.create!(first_name: "Pat", last_name: "Patterson", email: "pat@email.com", password: "123456", nationality:
-  "British", bio: "I'm Pat and I love hats and art.", date_of_birth: "1980-01-01", degree: "BA from UCL",
-  location: "London")
+pat = User.new(first_name: "Pat", last_name: "Patterson", email: "pat@email.com", password: "123456", nationality: "British", bio: "I'm Pat and I love hats and art!", date_of_birth: "1980-01-01", location: "London")
+file = URI.open("https://source.unsplash.com/random/?male%20face")
+pat.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
+pat.save!
 
 
 david_boatwright = User.create!(first_name: "David", last_name: "Boatwright", email: "luckyboyart@email.com",
