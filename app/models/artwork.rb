@@ -8,7 +8,14 @@ class Artwork < ApplicationRecord
   validates :medium, inclusion: { in: ["painting", "photography", "sculpture", "prints", "work on paper", "design", "drawing", "installation", "film/video"] }
 
   include PgSearch::Model
-  multisearchable against: [:title, :price, :medium, :material]
+  pg_search_scope :global_search,
+  against: [ :title, :medium ],
+  associated_against: {
+    user: [ :first_name, :last_name ]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 
   def average_size
     (height.to_i + width.to_i) / 2
