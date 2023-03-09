@@ -34,6 +34,18 @@ file = URI.open("https://bloximages.newyork1.vip.townnews.com/postandcourier.com
 david_boatwright.photo.attach(io: file, filename: "david_boatwright.jpg", content_type: "image/jpg")
 david_boatwright.save!
 
+molly_b_right = User.create!(first_name: "Molly", last_name: "B. Right", email: "moboright@email.com",
+  password: "123456", nationality: "American",
+  bio: "Molly B. Right specializes in oversized mosaic-like portraits made from vintage bottle caps.
+  Right is a self-taught artist. She began by painting small paintings, often on pieces of scrap metal or lumber that
+  she found. The subject matter ranged from vignettes of her childhood to minimalist figurative works.
+  She made her leap from narrative paintings to bottle cap portraits was made in 2002.", date_of_birth: "1963-06-26",
+  degree: "Self-taught",
+  location: "Charleston")
+file = URI.open("https://mollybright.com/wp-content/uploads/2021/08/molly-headshot.jpg")
+molly_b_right.photo.attach(io: file, filename: "molly_b_right.jpg", content_type: "image/jpg")
+molly_b_right.save!
+
 puts "Creating collections..."
 first_collection = Collection.new(title: "New & Noteworthy", description: "Our curators gather their top picks of the newest artists to join Artichoke.")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_orig.jpg")
