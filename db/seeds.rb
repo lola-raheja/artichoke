@@ -34,10 +34,10 @@ file = URI.open("https://bloximages.newyork1.vip.townnews.com/postandcourier.com
 david_boatwright.photo.attach(io: file, filename: "david_boatwright.jpg", content_type: "image/jpg")
 david_boatwright.save!
 
-joey = User.new(first_name: "Joe", last_name: "Hartley", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I love art!", date_of_birth: "1988-01-01", location: "London")
+pat = User.new(first_name: "Pat", last_name: "Patterson", email: "pat@email.com", password: "123456", nationality: "British", bio: "I'm Pat and I love hats and art!", date_of_birth: "1980-01-01", location: "London")
 file = URI.open("https://source.unsplash.com/random/?male%20face")
-joey.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
-joey.save!
+pat.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
+pat.save!
 
 puts "Creating collections..."
 first_collection = Collection.new(title: "New & Noteworthy", description: "Our curators gather their top picks of the newest artists to join Artichoke.")
