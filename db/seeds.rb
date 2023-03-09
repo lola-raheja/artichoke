@@ -16,6 +16,10 @@ Bid.destroy_all
 
 puts "Creating users..."
 
+pat = User.create!(first_name: "Pat", last_name: "Patterson", email: "pat@email.com", password: "123456", nationality:
+  "British", bio: "I'm Pat and I love hats and art.", date_of_birth: "1980-01-01", degree: "BA from UCL",
+  location: "London")
+
 david_boatwright = User.create!(first_name: "David", last_name: "Boatwright", email: "luckyboyart@email.com",
   password: "123456", nationality: "American",
   bio: "David Boatwright is a painter, known for his murals, as well as a musician and filmmaker.
