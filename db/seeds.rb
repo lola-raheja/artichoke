@@ -14,19 +14,29 @@ Collection.destroy_all
 ArtworkCollection.destroy_all
 Bid.destroy_all
 
-puts "Creating user..."
-joey = User.new(first_name: "Joey", last_name: "Artist", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I'm a painter", date_of_birth: "1988-01-01", location: "London")
-file = URI.open("https://source.unsplash.com/random/?male%20face")
-joey.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
-joey.save!
-jan = User.new(first_name: "Jan", last_name: "Photographer", email: "janphotographer@email.com", password: "123456", nationality: "Slovakian", bio: "I'm a photographer", date_of_birth: "1990-01-01", location: "Berlin")
-file = URI.open("https://source.unsplash.com/random/?male%20face")
-jan.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
-jan.save!
+puts "Creating users..."
+
+david_boatwright = User.create!(first_name: "David", last_name: "Boatwright", email: "luckyboyart@email.com",
+  password: "123456", nationality: "American",
+  bio: "David Boatwright is a painter, known for his murals, as well as a musician and filmmaker.
+  From Camden, South Carolina, he holds an MFA in painting from the SF Art Institute and was a graduate fellow at AFI
+  filmschool in Los Angeles. In 1977, he received a grant from the National Endowment for the Arts to make documentary
+  films, resulting in the film Aimar’s, a pastiche of life in Charleston encapsulated by a pharmacy’s last day in
+  business. Boatwright always maintained a painting practice, which came to the forefront to his artistic career in the
+  1990s. Working under the mantle of Lucky Boy Art, Boatwright has painted more than 50 murals across South Carolina,
+  Georgia, and Louisiana. His studio oil on canvas work has also been exhibited at the Halsey Institute of Contemporary
+  Art, City Gallery at Waterfront Park, and Eye Level Art. In 2019, he was a visiting artist at the Gibbes Museum in
+  Charleston, SC, responding to a painting from their collection, “Plowing it Under” by Thomas Hart Benton, a distant
+  relative of Boatwright’s. His work often harkens to the South of his youth, employing mythical characters, freak show characters,
+  agricultural life, and alligators.", date_of_birth: "1947-05-26", degree: "MFA from SF Art Institute",
+  location: "Charleston")
+file = URI.open("https://bloximages.newyork1.vip.townnews.com/postandcourier.com/content/tncms/assets/v3/editorial/a/d8/ad8bdb54-9569-11e6-a0e3-a77d7b6e5b51/5806790e8b3f8.image.jpg")
+david_boatwright.photo.attach(io: file, filename: "david_boatwright.jpg", content_type: "image/jpg")
+david_boatwright.save!
 
 puts "Creating collections..."
-first_collection = Collection.new(title: "New & Noteworthy", description: "The crème de la crème of the newest Artichoke additions")
-file = URI.open("https://source.unsplash.com/random/?art")
+first_collection = Collection.new(title: "New & Noteworthy", description: "Our curators gather their top picks of the newest artists to join Artichoke.")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_orig.jpg")
 first_collection.photo.attach(io: file, filename: "first_collection.png", content_type: "image/png")
 first_collection.save!
 second_collection = Collection.create!(title: "Bold Bids", description: "How much? These eyecatching pieces are causing a stir")
@@ -43,21 +53,38 @@ fourth_collection.photo.attach(io: file, filename: "fourth_collection.png", cont
 fourth_collection.save!
 
 puts "Creating art..."
-mona = { title: "Mona Lisa", price: 90, user: joey, medium: "painting", height: 77, width: 53, year: "1503-01-01", material: "Oil on poplar panel", end_time: "2023-03-09 23:59:59" }
-scream = { title: "The Scream", price: 450, user: joey, medium: "painting", height: 91, width: 73, year: "1893-01-01", material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-08 23:59:59" }
-pitchfork = { title: "American Gothic", price: 150, user: jan, medium: "photography", height: 74, width: 62, year: "1930-01-01", material: "Oil on beaverboard", end_time: "2023-03-16 23:59:59" }
-diners = { title: "Nighthawks", price: 510, user: jan, medium: "photography", height: 84, width: 152, year: "1942-01-01", material: "Oil on canvas", end_time: "2023-03-16 23:59:59" }
 
-[mona, scream, pitchfork, diners].each do |attributes|
-  artwork = Artwork.new(attributes)
-  file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
-  artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
-  artwork.save!
-  puts "Created #{artwork.title}"
-  ArtworkCollection.create!(artwork: artwork, collection: first_collection)
-  ArtworkCollection.create!(artwork: artwork, collection: second_collection)
-  ArtworkCollection.create!(artwork: artwork, collection: third_collection)
-  ArtworkCollection.create!(artwork: artwork, collection: fourth_collection)
-end
+funk = Artwork.new(title: "Funk (Hardest Working Man)", price: 5000, user: david_boatwright, medium: "painting",
+height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9932845_orig.jpg")
+funk.photo.attach(io: file, filename: "funk.jpg", content_type: "image/jpg")
+funk.save!
+
+eleven_dollars = Artwork.new(title: "Eleven Dollars", price: 5000, user: david_boatwright, medium: "painting",
+  height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/2947265_orig.jpg")
+eleven_dollars.photo.attach(io: file, filename: "eleven_dollars.jpg", content_type: "image/jpg")
+eleven_dollars.save!
+
+six_dollars = Artwork.new(title: "Six Dollars", price: 1000, user: david_boatwright, medium: "painting",
+  height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9086013_orig.jpg")
+six_dollars.photo.attach(io: file, filename: "six_dollars.jpg", content_type: "image/jpg")
+six_dollars.save!
+
+i_aint_know = Artwork.new(title: "I Ain't Know", price: 500, user: david_boatwright, medium: "painting",
+  height: 75, width: 100, year: "2020-01-01", material: "Limited edition giclee print", end_time: "2023-05-26 18:02:25")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_orig.jpg")
+i_aint_know.photo.attach(io: file, filename: "i_aint_know.jpg", content_type: "image/jpg")
+i_aint_know.save!
+
+no_dice = Artwork.new(title: "No Dice", price: 4500, user: david_boatwright, medium: "painting",
+  height: 150, width: 200, year: "2017-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/img-0348_orig.jpeg")
+no_dice.photo.attach(io: file, filename: "no_dice.jpg", content_type: "image/jpg")
+no_dice.save!
+
+artwork1 = [funk, eleven_dollars, six_dollars, i_aint_know, no_dice]
+ArtworkCollection.create!(artwork: artwork1, collection: first_collection)
 
 puts "Finished!"
