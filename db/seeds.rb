@@ -35,7 +35,7 @@ david_boatwright = User.create!(first_name: "David", last_name: "Boatwright", em
   relative of Boatwright’s. His work often harkens to the South of his youth, employing mythical characters, freak show characters,
   agricultural life, and alligators.", date_of_birth: "1947-05-26", degree: "MFA from SF Art Institute",
   location: "Charleston")
-file = URI.open("https://bloximages.newyork1.vip.townnews.com/postandcourier.com/content/tncms/assets/v3/editorial/a/d8/ad8bdb54-9569-11e6-a0e3-a77d7b6e5b51/5806790e8b3f8.image.jpg")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9961955_orig.jpeg")
 david_boatwright.photo.attach(io: file, filename: "david_boatwright.jpg", content_type: "image/jpg")
 david_boatwright.save!
 
@@ -152,3 +152,5 @@ queen_elizabeth.photo.attach(io: file, filename: "queen_elizabeth.jpg", content_
 queen_elizabeth.save!
 ArtworkCollection.create!(artwork: queen_elizabeth, collection: second_collection)
 second_collection.save!
+
+puts "Finished Molly's artwork!"

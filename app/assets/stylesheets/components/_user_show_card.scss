@@ -1,0 +1,34 @@
+.flexbox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-profile-card {
+  border-bottom: 1px solid $artichoke-purple;
+}
+
+.user-profile-photo {
+  align-items: center;
+}
+
+.user-profile-info {
+  margin-top: 16px;
+  margin-left: 8px;
+}
+
+.user-profile-info p {
+  margin-bottom: 0px;
+}
+
+.bio-container {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.artworks-container {
+  margin-top: 16px;
+}
+
+.bio-card {
+  text-align: justify;
+}
