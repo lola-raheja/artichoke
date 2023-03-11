@@ -1,15 +1,16 @@
 <div class="user-profile-card">
-  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
   <div class="row">
-    <div class="col-md-6">
-      <%= cl_image_tag @user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-large" %>
+    <div class="col-md-4">
+      <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
+      <p><%= @user.nationality %>, b. <%= @user.date_of_birth.strftime("%Y") %><p>
+      <p><%= @user.location %></p>
+      <p><%= @user.degree %></p>
     </div>
-    <div class="col-md-6">
-      <p class ="lead">Bio</p>
+    <div class="col-md-8">
+      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
       <p><%= @user.bio %></p>
     </div>
   </div>
-    <p><%= @user.nationality %>, b. <%= @user.date_of_birth.strftime("%Y") %><p>
 </div>
 
 <% if @user.artworks.exists? %>
