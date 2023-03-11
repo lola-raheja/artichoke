@@ -1,11 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-artichoke">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "artichoke logo small.png", alt: "Artichoke logo" %>
+        <%= image_tag "logo.svg", alt: "Artichoke logo" %>
     <% end %>
-
-    <%= link_to root_path, class: "navbar-main-brand" do %>
-      <%= image_tag "artichoke logo full.png", alt: "Artichoke logo" %>
+     <%= form_with url: artworks_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Discover artwork from independent artists" %>
+      <%= submit_tag "Search", class: "btn btn-primary ms-2" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,10 +16,10 @@
       <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Buy", "#", class: "nav-link" %>
+            <%= link_to "Collections", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sell", "#", class: "nav-link" %>
+            <%= link_to "All artworks", artworks_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <% if current_user.photo.attached? %>
