@@ -2,7 +2,11 @@
   <div class="flexbox">
     <div>
       <div class="user-profile-photo">
-        <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-large" %>
+        <% end %>
       </div>
       <div class = user-profile-info>
         <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @user.location %></p>

@@ -16,7 +16,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-radius: 16px;
+  border-radius: $border-radius;
   height: 100%;
 }
 
@@ -57,7 +57,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-radius: 16px;
+  border-radius: $border-radius;
   height: 100%;
 }
 
