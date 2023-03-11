@@ -3,10 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 25px;
   gap: 10px;
   width: 100%;
-  height: 96px;
+  height: 80px;
   left: 0px;
   top: 0px;
   background: $artichoke-green;
@@ -20,6 +19,27 @@
   width: 300px;
 }
 
-.navbar-artichoke .navbar-main-brand img {
-  width: 390px;
+.navbar-icon {
+  width: 50px;
+}
+
+.icon-purple {
+  color: $artichoke-purple;
+  font-size: 2rem;
+}
+
+.navbar-artichoke .search-bar {
+  width: 360px;
+}
+
+.navbar-artichoke .search-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid $artichoke-purple;
+  border-radius: 5px;
+  background: hsl(91, 35%, 90%);
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
 }
