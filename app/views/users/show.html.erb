@@ -20,7 +20,7 @@
 </div>
 
 <% if @user.artworks.exists? %>
-  <div class="artworks-container">
+  <div class="artworks-container" data-controller="slider">
     <h2>Available artwork</h2>
     <div class="row">
       <% @artworks.each do |artwork| %>
