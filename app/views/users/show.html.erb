@@ -6,13 +6,13 @@
 <br><%= @user.degree %>
 <br> <%= @user.bio %></h2>
 <br>
-<% @artworks.each do |artwork| %>
+<p><% @artworks.each do |artwork| %>
   <%= link_to(artwork_path(artwork)) do %>
     <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
     <h3><%#= artwork.title %></h3>
     <p><%#= artwork.price %></p>
   <% end %>
-<% end %>
+<% end %></p>
 
 
 
