@@ -1,8 +1,10 @@
 class CollectionsController < ApplicationController
   def show
     @collection = Collection.find(params[:id])
-
-    @artworks = @collection.artworks
+    @artworks = @collection.artworks.order(title: :asc)
+    if params[:user_location].present?
+      @artworks = @artworks.joins(:user).where(users: { location: params[:user_location] })
+    end
     if params[:medium].present?
       @artworks = @artworks.where(medium: params[:medium])
     end

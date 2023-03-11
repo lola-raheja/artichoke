@@ -1,18 +1,73 @@
-<h1>Artist Show Page</h1>
-<h2><%= @user.first_name %> <%= @user.last_name %>
-<br><%= @user.nationality %>
-<br><%= @user.date_of_birth%>
-<br><%= @user.location %>
-<br><%= @user.degree %>
-<br> <%= @user.bio %></h2>
-<br>
-<p><% @artworks.each do |artwork| %>
-  <%= link_to(artwork_path(artwork)) do %>
-    <%= cl_image_tag artwork.photo.key, width: 400, height: 300, crop: :fill %>
-    <h3><%#= artwork.title %></h3>
-    <p><%#= artwork.price %></p>
-  <% end %>
-<% end %></p>
+<div class="user-profile-card">
+  <div class="flexbox">
+    <div>
+      <div class="user-profile-photo">
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
+        <% else %>
+          <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-large" %>
+        <% end %>
+      </div>
+      <div class = user-profile-info>
+        <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @user.location %></p>
+        <p><%= @user.nationality %>, b. <%= @user.date_of_birth.strftime("%Y") %><p>
+        <p><%= @user.degree %></p>
+      </div>
+    </div>
+    <div class="bio-container">
+      <div class="bio-card">
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <p><%= @user.bio %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if @user.artworks.exists? %>
+  <div class="artworks-container">
+    <h2>Available artwork</h2>
+    <div class="row">
+      <% @artworks.each do |artwork| %>
+        <div class="col-4 artwork-card-body">
+          <%= link_to artwork_path(artwork) do %>
+            <div class="row">
+              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+              <div class="artwork-card-info">
+                <p class="artwork-title"><%= artwork.title %></p>
+                <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<% if @user == current_user %>
+  <div class="bids-list">
+    <h2>My bids</h2>
+    <div class="row">
+      <% if @bids.any? %>
+        <% @bids.each do |bid| %>
+          <div class="col-4 artwork-card-body">
+            <%= link_to artwork_path(bid.artwork) do %>
+              <div class="row">
+                <%= cl_image_tag bid.artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+                <div class="artwork-card-info">
+                  <p class="artist-name"><%= bid.artwork.user.first_name %> <%= bid.artwork.user.last_name %></p>
+                  <p class="artwork-title"><%= bid.artwork.title %></h3>
+                  <p class="artwork-price">Your latest bid: <%= number_to_currency(bid.amount, unit: "£", precision: 0) %>.
+                  Highest bid: <%= number_to_currency(bid.artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No bids found.</p>
+      <% end %>
+  </div>
+<% end %>
 
 
 
