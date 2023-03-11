@@ -1,25 +1,26 @@
 <div class="row">
-  <div class="col-6 me-auto text-center">
+<%= link_to root_path do %>
+   <%= image_tag "back-arrow.svg", width: 44, height: 44, class: "back-arrow" %>
+   <% end %>
+  <div class="col-6 me-auto">
+    <h2><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h2>
     <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-height: calc(80vh); max-width: 100%;" %>
   </div>
   <div class="col-4 me-auto">
-    <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}", @artwork.user %></h2>
     <div class="d-flex align-items-center">
       <div class="p-2">
         <% if @artwork.user.photo.attached? %>
-          <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-medium" %>
+          <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-smaller" %>
         <% else %>
-          <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-medium" %>
+          <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-smaller" %>
         <% end %>
       </div>
       <div class="p-2">
         <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
         <p>Location: <%= @artwork.user.location %></p>
-        <% if @artwork.user != current_user %>
-          <%= link_to "Message #{@artwork.user.first_name}", @artwork.user, class: "btn btn-primary" %>
-        <% end %>
       </div>
     </div>
+    <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}",  @artwork.user, style: "text-decoration: none"%></h2>
     <h3><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h3>
     <p><%= @artwork.material %></p>
     <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
