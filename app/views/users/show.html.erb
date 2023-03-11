@@ -1,20 +1,26 @@
 <div class="user-profile-card">
-  <div class="row">
-    <div class="col-md-4">
-      <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
-      <p><%= @user.nationality %>, b. <%= @user.date_of_birth.strftime("%Y") %><p>
-      <p><%= @user.location %></p>
-      <p><%= @user.degree %></p>
+  <div class="flexbox">
+    <div>
+      <div class="user-profile-photo">
+        <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
+      </div>
+      <div class = user-profile-info>
+        <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @user.location %></p>
+        <p><%= @user.nationality %>, b. <%= @user.date_of_birth.strftime("%Y") %><p>
+        <p><%= @user.degree %></p>
+      </div>
     </div>
-    <div class="col-md-8">
-      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <p><%= @user.bio %></p>
+    <div class="bio-container">
+      <div class="bio-card">
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <p><%= @user.bio %></p>
+      </div>
     </div>
   </div>
 </div>
 
 <% if @user.artworks.exists? %>
-  <div class="artworks">
+  <div class="artworks-container">
     <h2>Available artwork</h2>
     <div class="row">
       <% @artworks.each do |artwork| %>
