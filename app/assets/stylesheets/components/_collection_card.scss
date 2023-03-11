@@ -11,8 +11,9 @@
   justify-content: space-around;
 }
 
-.collection-card-big {
+.collection-card-big, .collection-card-small {
   position: relative;
+  overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -20,66 +21,53 @@
   height: 100%;
 }
 
-// .collection-card-big img {
-//
-//   padding: 4px;
-//   // height: 100%;
-//   // object-fit: cover;
-// }
+.collection-card-big:before,
+.collection-card-small:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
 
-// .collection-card-big h2 {
-//   position: absolute;
-//   top: 8px;
-//   left: 8px;
-//   text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7), 0px 0px 6px rgba(0, 0, 0, 0.7);
-// }
+.collection-card-big:hover:before,
+.collection-card-small:hover:before {
+  opacity: 1;
+}
+
+.text-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $artichoke-background;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.collection-card-big:hover .text-content,
+.collection-card-small:hover .text-content {
+  opacity: 1;
+}
 
 .collection-card-big h2 {
   position: absolute;
   top: 8px;
   left: 8px;
-  background-color: rgba(255, 255, 255, 0.5);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   padding: 8px;
-  border-radius: 16px;
+  color: $artichoke-background;
 }
-
-// .collection-card-big img:hover{
-//   background-color: $artichoke-purple;
-//   opacity: 35%;
-//   .text-content {
-//     display: block;
-//   }
-// }
-
-.collection-card-small {
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border-radius: $border-radius;
-  height: 100%;
-}
-
-// .collection-card-small img {
-//   border-radius: 16px;
-//   height: 100%;
-//   // object-fit: cover;
-//   padding:4px;
-// }
 
 .collection-card-small h2 {
   position: absolute;
   top: 8px;
   left: 8px;
-  background-color: rgba(255, 255, 255, 0.5);
   text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   padding: 8px;
-  border-radius: 16px;
-}
-
-.text-content {
-  position:absolute;
-  top: 0;
-  left: 0;
+  color: $artichoke-background;
 }
