@@ -1,7 +1,7 @@
 class CollectionsController < ApplicationController
   def show
     @collection = Collection.find(params[:id])
-    @artworks = params[:query].present? ? @collection.artworks.global_search(params[:query]) : @collection.artworks.order(title: :asc)
+    @artworks = @collection.artworks.order(title: :asc)
     if params[:user_location].present?
       @artworks = @artworks.joins(:user).where(users: { location: params[:user_location] })
     end

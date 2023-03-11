@@ -6,7 +6,11 @@
     <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}", @artwork.user %></h2>
     <div class="d-flex align-items-center">
       <div class="p-2">
-        <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-medium" %>
+        <% if @artwork.user.photo.attached? %>
+          <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-medium" %>
+        <% else %>
+          <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-medium" %>
+        <% end %>
       </div>
       <div class="p-2">
         <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
