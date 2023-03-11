@@ -24,22 +24,24 @@
 </div>
 
 <% if @user.artworks.exists? %>
-  <div class="artworks-container" data-controller="slider">
+  <div data-controller="hello">
     <h2>Available artwork</h2>
-    <div class="row">
-      <% @artworks.each do |artwork| %>
-        <div class="col-4 artwork-card-body">
-          <%= link_to artwork_path(artwork) do %>
-            <div class="row">
-              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
-              <div class="artwork-card-info">
-                <p class="artwork-title"><%= artwork.title %></p>
-                <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
+    <div class="d-flex justify-content-between align-items-bottom">
+      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#previous">Previous</a>
+        <% @artworks.each_with_index do |artwork, index| %>
+          <div class="artwork-card-body" data-pos= "<%= index %>">
+            <%= link_to artwork_path(artwork) do %>
+              <div class="row">
+                <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+                <div class="artwork-card-info">
+                  <p class="artwork-title"><%= artwork.title %></p>
+                  <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
+                </div>
               </div>
-            </div>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
       <% end %>
+      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#next">Next</a>
     </div>
   </div>
 <% end %>
