@@ -4,8 +4,7 @@ class BidsController < ApplicationController
   def show
     @bid = Bid.find(params[:id])
     @artworks = @bid.artwork.user.artworks
-    @collections = Collection.joins(:artwork_collections).where(artwork_collections: { artwork: @bid.artwork })
-
+    @collections = @bid.artwork.collections
   end
 
   def create
