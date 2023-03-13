@@ -3,22 +3,24 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.svg", alt: "Artichoke logo" %>
     <% end %>
-    <%= form_with url: artworks_path, method: :get, class: "search-bar d-flex" do |f| %>
+    <%= form_with url: artworks_path, method: :get, class: "search-bar" do |f| %>
       <%= f.text_field :query, class: "form-control search-input", placeholder: "🔎 Discover artwork from independent artists" %>
     <% end %>
     <% if user_signed_in? %>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <div class="d-flex align-items-center">
-          <%= image_tag "icon.svg", alt: "Artichoke logo", class: "navbar-icon me-2" %>
+          <%= image_tag "icon.svg", alt: "Artichoke icon", class: "navbar-icon me-2" %>
           <i class="fa-solid fa-bars icon-purple"></i>
         </div>
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
-          <% else %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <%= link_to user_path(current_user) do %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
+            <% else %>
+              <%= image_tag "icon.svg", alt: "Artichoke icon", class: "navbar-icon me-2" %>
+            <% end %>
           <% end %>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
@@ -35,9 +37,6 @@
             </li>
             <li class="nav-item">
               <%= link_to "Wishlist", "#", class: "nav-link" %>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
             </li>
             <li>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
