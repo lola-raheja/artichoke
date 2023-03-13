@@ -3,6 +3,9 @@ class BidsController < ApplicationController
 
   def show
     @bid = Bid.find(params[:id])
+    @artworks = @bid.artwork.user.artworks
+    @collections = Collection.joins(:artwork_collections).where(artwork_collections: { artwork: @bid.artwork })
+
   end
 
   def create
@@ -19,7 +22,11 @@ class BidsController < ApplicationController
   def destroy
     @bid = Bid.find(params[:id])
     @bid.destroy
-    redirect_to artwork_path(@bid.artwork)
+    redirect_to artwork_path(@bid.artwork), notice: "Bid deleted."
+  end
+
+  def edit
+    @bid = Bid.find(params[:id])
   end
 
   def update

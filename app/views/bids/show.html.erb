@@ -1,1 +1,68 @@
-<p><%= @bid.amount %> bidded on <%= @bid.artwork.title %></p>
+<div class="container">
+  <div class="card w-50 mb-3 mx-auto">
+    <div class="card-header">
+      <p>Hey <%= @bid.user.first_name %>,</p>
+      <h3><i class="fa-solid fa-check"></i> Your bid is confirmed!</h3>
+      <p>Thank you for your bid on <%= @bid.artwork.title %>, <%= @bid.artwork.year.strftime("%Y")%>.</p>
+    </div>
+  <div class="row p-4 justify-content-between">
+    <div class="col">
+      <%= cl_image_tag @bid.artwork.photo.key, width: 200, crop: :fill, class: "zoomable" %>
+    </div>
+    <div class="col text-end">
+      <p class="artist-name"><%= @bid.artwork.user.first_name %> <%= @bid.artwork.user.last_name %></p>
+      <p class="artwork-title"><%= @bid.artwork.title %></p>
+      <p>Amount bid: <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %></p>
+      <div class="d-flex justify-content-end">
+        <%= link_to "Edit bid", edit_bid_path(@bid), class: "btn btn-outline-primary me-2" %>
+        <%= link_to "Delete bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+  <div data-controller="hello">
+    <h2>More by this artist</h2>
+    <div class="d-flex justify-content-between align-items-bottom">
+      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#previous">Previous</a>
+        <% @artworks.each_with_index do |artwork, index| %>
+          <div class="artwork-card-body" data-pos= "<%= index %>">
+            <%= link_to artwork_path(artwork) do %>
+              <div class="row">
+                <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+                <div class="artwork-card-info">
+                  <p class="artwork-title"><%= artwork.title %></p>
+                  <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
+      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#next">Next</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+  <div data-controller="hello">
+    <h2>Collections featuring this artwork</h2>
+    <div class="d-flex justify-content-between align-items-bottom">
+      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#previous">Previous</a>
+        <% @collections.each_with_index do |collection, index| %>
+          <div class="artwork-card-body" data-pos= "<%= index %>">
+            <%= link_to collection_path(collection) do %>
+              <div class="row">
+                <%= cl_image_tag collection.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+                <div class="artwork-card-info">
+                  <p class="artwork-title"><%= collection.title %></p>
+                  <p class="artwork-price"><%= collection.description %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+      <% end %>
+      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#next">Next</a>
+    </div>
+  </div>
+</div>
