@@ -35,7 +35,6 @@
                 <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
                 <div class="artwork-card-info">
                   <p class="artwork-title"><%= artwork.title %></p>
-                  <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
                 </div>
               </div>
             <% end %>
