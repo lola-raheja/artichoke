@@ -3,7 +3,7 @@ class BidsController < ApplicationController
 
   def show
     @bid = Bid.find(params[:id])
-    @artworks = @bid.artwork.user.artworks
+    @artworks = @bid.artwork.user.artworks.where.not(id: @bid.artwork.id)
     @collections = @bid.artwork.collections
   end
 

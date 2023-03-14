@@ -3,7 +3,7 @@
     <div class="card-header">
       <p>Hey <%= @bid.user.first_name %>,</p>
       <h3><i class="fa-solid fa-check"></i> Your bid is confirmed!</h3>
-      <p>Thank you for your bid on <%= @bid.artwork.title %>, <%= @bid.artwork.year.strftime("%Y")%>.</p>
+      <p>You are currently the highest bidder on <%= @bid.artwork.title %>, <%= @bid.artwork.year.strftime("%Y")%>.</p>
     </div>
   <div class="row p-4 justify-content-between">
     <div class="col">
@@ -24,45 +24,36 @@
 <div class="container-fluid mt-5">
   <div data-controller="hello">
     <h2>More by this artist</h2>
-    <div class="d-flex justify-content-between align-items-bottom">
-      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#previous">Previous</a>
+    <div class="slider-container">
+      <h3><i class="fa-solid fa-arrow-left slider-arrow-previous" data-controller="hello" data-action="click->hello#previous"></i></h3>
+      <div class="slider-inner-div">
         <% @artworks.each_with_index do |artwork, index| %>
           <div class="artwork-card-body" data-pos= "<%= index %>">
             <%= link_to artwork_path(artwork) do %>
-              <div class="row">
-                <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
-                <div class="artwork-card-info">
-                  <p class="artwork-title"><%= artwork.title %></p>
-                  <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
-                </div>
-              </div>
+              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
             <% end %>
           </div>
-      <% end %>
-      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#next">Next</a>
+        <% end %>
+        <h3><i class="fa-solid fa-arrow-right slider-arrow-next" data-controller="hello" data-action="click->hello#next"></i></h3>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="container-fluid mt-5">
-  <div data-controller="hello">
-    <h2>Collections featuring this artwork</h2>
-    <div class="d-flex justify-content-between align-items-bottom">
-      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#previous">Previous</a>
-        <% @collections.each_with_index do |collection, index| %>
-          <div class="artwork-card-body" data-pos= "<%= index %>">
-            <%= link_to collection_path(collection) do %>
-              <div class="row">
-                <%= cl_image_tag collection.photo.key, width: 400, crop: :fill, class: "zoomable" %>
-                <div class="artwork-card-info">
-                  <p class="artwork-title"><%= collection.title %></p>
-                  <p class="artwork-price"><%= collection.description %></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
+  <h2>Collections featuring this artwork</h2>
+  <div class="slider-container">
+    <div class="slider-inner-div">
+      <% @collections.each do |collection| %>
+        <div class="artwork-card-body">
+          <%= link_to collection_path(collection) do %>
+            <%= cl_image_tag collection.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+            <div class="artwork-card-info">
+              <p class="artwork-title"><%= collection.title %></p>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-      <a class="btn btn-primary" data-controller="hello" data-action="click->hello#next">Next</a>
     </div>
   </div>
 </div>
