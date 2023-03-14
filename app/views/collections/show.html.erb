@@ -1,4 +1,8 @@
 <div>
+  <div>
+    <h1><%= @collection.title %></h1>
+    <p class="lead"><%= @collection.description %></p>
+  </div>
   <div class="filter-container">
     <p>Filter by</p>
     <%= form_with url: collection_path(@collection), method: :get do |f| %>
@@ -33,9 +37,6 @@
     <% end %>
   </div>
   <div>
-    <h1><%= @collection.title %></h1>
-    <p class="lead"><%= @collection.description %></p>
-    <p><%= pluralize @artworks.count, "Artwork" %></p>
     <div class="row">
       <% @artworks.each do |artwork| %>
         <div class="artwork-card-body">
