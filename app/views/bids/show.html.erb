@@ -4,6 +4,7 @@
       <p>Hey <%= @bid.user.first_name %>,</p>
       <h3><i class="fa-solid fa-check"></i> Your bid is confirmed!</h3>
       <p>You are currently the highest bidder on <%= @bid.artwork.title %>, <%= @bid.artwork.year.strftime("%Y")%>.</p>
+      <p class="lead"><%= render "shared/countdown", artwork: @bid.artwork %></p>
     </div>
   <div class="row p-4 justify-content-between">
     <div class="col">
