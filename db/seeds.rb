@@ -13,6 +13,7 @@ User.destroy_all
 Collection.destroy_all
 ArtworkCollection.destroy_all
 Bid.destroy_all
+Medium.destroy_all
 
 puts "Creating users..."
 
@@ -68,6 +69,14 @@ fourth_collection = Collection.create!(title: "Gems under £500", description: "
 file = URI.open("https://source.unsplash.com/random/?art")
 fourth_collection.photo.attach(io: file, filename: "fourth_collection.png", content_type: "image/png")
 fourth_collection.save!
+
+puts "Creating media..."
+
+media = ["painting", "photography", "multi-media", "sculpture", "print", "design", "drawing"]
+
+media.each do |medium|
+  Medium.create!(medium: medium.to_s)
+end
 
 puts "Creating art..."
 

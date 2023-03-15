@@ -5,8 +5,6 @@ class Artwork < ApplicationRecord
   has_many :bids, dependent: :destroy
   has_one_attached :photo
 
-  validates :medium, inclusion: { in: ["painting", "photography", "sculpture", "prints", "work on paper", "design", "drawing", "installation", "film/video"] }
-
   include PgSearch::Model
   pg_search_scope :global_search,
   against: [ :title, :medium ],

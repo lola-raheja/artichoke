@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_175031) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_110336) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_175031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "end_time"
+    t.bigint "medium_id"
+    t.index ["medium_id"], name: "index_artworks_on_medium_id"
     t.index ["user_id"], name: "index_artworks_on_user_id"
   end
 
@@ -79,6 +81,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_175031) do
   create_table "collections", force: :cascade do |t|
     t.string "title"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "media", force: :cascade do |t|
+    t.string "medium"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_175031) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "artwork_collections", "artworks"
   add_foreign_key "artwork_collections", "collections"
+  add_foreign_key "artworks", "media"
   add_foreign_key "artworks", "users"
   add_foreign_key "bids", "artworks"
   add_foreign_key "bids", "users"
