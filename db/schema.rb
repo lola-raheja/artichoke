@@ -54,7 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_110336) do
   create_table "artworks", force: :cascade do |t|
     t.string "title"
     t.integer "price"
-    t.string "medium"
     t.date "year"
     t.string "material"
     t.string "height"
