@@ -8,15 +8,15 @@
     <%= form_with url: collection_path(@collection), method: :get do |f| %>
       <div class="filter-parameter-container">
         <div>
-          <%= f.label(:user_location, "Location") %>
+          <%= f.label(:user_location, "Location:") %>
           <%= f.select(:user_location, options_for_select(@collection.artworks.joins(:user).pluck(:location).uniq, params[:user_location]), include_blank: true) %>
         </div>
         <div>
-          <%= f.label(:medium, "Medium") %>
+          <%= f.label(:medium, "Medium:") %>
           <%= f.select(:medium, options_for_select(@collection.artworks.pluck(:medium).uniq, params[:medium]), include_blank: true) %>
         </div>
         <div>
-          <%= f.label(:price, 'Price') %>
+          <%= f.label(:price, 'Price:') %>
           <%= f.select(:price, options_for_select([
             ['Under £100', '0,99'],
             ['£100 - £299', '100,299'],
@@ -27,7 +27,7 @@
           ], (params[:price])), include_blank: true) %>
         </div>
         <div>
-          <%= f.label(:size, 'Size') %>
+          <%= f.label(:size, 'Size:') %>
           <%= f.select(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
         </div>
         <div>
