@@ -38,16 +38,14 @@
     <p><%= pluralize @artworks.count, "Artwork" %></p>
     <div class="row">
       <% @artworks.each do |artwork| %>
-        <div class="col-4 artwork-card-body">
+        <div class="col-sm artwork-card-body">
           <%= link_to artwork_path(artwork) do %>
-            <div class="row">
               <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
               <div class="artwork-card-info">
                 <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
                 <p class="artwork-title"><%= artwork.title %></p>
                 <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
               </div>
-            </div>
           <% end %>
         </div>
       <% end %>
