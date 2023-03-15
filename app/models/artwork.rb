@@ -1,5 +1,6 @@
 class Artwork < ApplicationRecord
   belongs_to :user
+  belongs_to :medium
   has_many :artwork_collections, dependent: :destroy
   has_many :collections, through: :artwork_collections
   has_many :bids, dependent: :destroy
