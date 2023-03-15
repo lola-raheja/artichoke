@@ -4,7 +4,10 @@ class BidsController < ApplicationController
   def show
     @bid = Bid.find(params[:id])
     @artworks = @bid.artwork.user.artworks.where.not(id: @bid.artwork.id)
+    @artwork = @artworks.present? ? @artworks.sample : nil
     @collections = @bid.artwork.collections
+    @collection = @collections.present? ? @collections.sample : nil
+    @highest_bid = @bid.amount
   end
 
   def create
@@ -31,7 +34,7 @@ class BidsController < ApplicationController
   def update
     @bid = Bid.find(params[:id])
     @bid.update(bid_params)
-    redirect_to artwork_path(@bid.artwork)
+    redirect_to bid_path(@bid), notice: "Bid was edited."
   end
 
   private

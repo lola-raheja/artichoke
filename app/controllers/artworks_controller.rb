@@ -27,7 +27,7 @@ class ArtworksController < ApplicationController
 
   def show
     @artwork = Artwork.find(params[:id])
-    @bids = @artwork.bids
-    @bid = Bid.new
+    @highest_bid = @artwork.bids.maximum(:amount) || @artwork.price
+    @bid = @artwork.bids.find_by(user: current_user) || Bid.new
   end
 end

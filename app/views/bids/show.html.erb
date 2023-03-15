@@ -1,60 +1,61 @@
 <div class="container">
-  <div class="card w-50 mb-3 mx-auto">
+  <div class="card w-50 my-3 mx-auto">
     <div class="card-header">
       <p>Hey <%= @bid.user.first_name %>,</p>
       <h3><i class="fa-solid fa-check"></i> Your bid is confirmed!</h3>
       <p>You are currently the highest bidder on <%= @bid.artwork.title %>, <%= @bid.artwork.year.strftime("%Y")%>.</p>
-      <p class="lead"><%= render "shared/countdown", artwork: @bid.artwork %></p>
     </div>
-  <div class="row p-4 justify-content-between">
-    <div class="col">
-      <%= cl_image_tag @bid.artwork.photo.key, width: 200, crop: :fill, class: "zoomable" %>
-    </div>
-    <div class="col text-end">
-      <p class="artist-name"><%= @bid.artwork.user.first_name %> <%= @bid.artwork.user.last_name %></p>
-      <p class="artwork-title"><%= @bid.artwork.title %></p>
-      <p>Amount bid: <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %></p>
-      <div class="d-flex justify-content-end">
-        <%= link_to "Edit bid", edit_bid_path(@bid), class: "btn btn-outline-primary me-2" %>
-        <%= link_to "Delete bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid mt-5">
-  <div data-controller="hello">
-    <h2>More by this artist</h2>
-    <div class="slider-container">
-      <h3><i class="fa-solid fa-arrow-left slider-arrow-previous" data-controller="hello" data-action="click->hello#previous"></i></h3>
-      <div class="slider-inner-div">
-        <% @artworks.each_with_index do |artwork, index| %>
-          <div class="artwork-card-body" data-pos= "<%= index %>">
-            <%= link_to artwork_path(artwork) do %>
-              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
-            <% end %>
-          </div>
+    <div class="row p-4 justify-content-between">
+      <div class="col">
+        <%= link_to artwork_path(@bid.artwork), style: "text-decoration: none" do %>
+          <%= cl_image_tag @bid.artwork.photo.key, width: 200, crop: :fill, class: "zoomable" %>
+          <p><i class="fa-solid fa-arrow-left mt-3"></i> Back to artwork<p>
         <% end %>
-        <h3><i class="fa-solid fa-arrow-right slider-arrow-next" data-controller="hello" data-action="click->hello#next"></i></h3>
+      </div>
+      <div class="col text-end">
+        <p class="artist-name"><%= @bid.artwork.user.first_name %> <%= @bid.artwork.user.last_name %></p>
+        <p class="artwork-title"><%= @bid.artwork.title %></p>
+        <p class="lead">Amount bid: <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %></p>
+        <p><small class="text-muted"><%= render "shared/countdown", artwork: @bid.artwork %></small></p>
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bidModal">Edit bid</button>
+          <%= link_to "Delete bid", bid_path(@bid), class: "btn btn-primary me-0", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container-fluid mt-5">
-  <h2>Collections featuring this artwork</h2>
-  <div class="slider-container">
-    <div class="slider-inner-div">
-      <% @collections.each do |collection| %>
-        <div class="artwork-card-body">
-          <%= link_to collection_path(collection) do %>
-            <%= cl_image_tag collection.photo.key, width: 400, crop: :fill, class: "zoomable" %>
-            <div class="artwork-card-info">
-              <p class="artwork-title"><%= collection.title %></p>
-            </div>
-          <% end %>
+  <div class="row p-4" style="height: 400px;">
+    <div class="col-4">
+      <%= link_to collection_path(@collection) do %>
+        <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @collection.photo.key, crop: :fill %>')">
+          <h2>Explore the collection</h2>
+          <div class="text-content">
+            <p class="lead"><%= @collection.title %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <%= link_to @bid.artwork.user do %>
+        <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @bid.artwork.user.photo.key, crop: :fill %>')">
+          <h2>About the artist</h2>
+          <div class="text-content">
+            <p class="lead"><%= @bid.artwork.user.first_name %> <%= @bid.artwork.user.last_name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <%= link_to artwork_path(@artwork) do %>
+        <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @artwork.photo.key, crop: :fill %>')">
+          <h2>More by the artist</h2>
+          <div class="text-content">
+            <p class="lead"><%= @artwork.title %></p>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+<%= render 'shared/bid_modal', { artwork: @bid.artwork, bid: @bid } %>
