@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :collections, only: :show
   resources :bids, only: %i[show destroy edit update]
   resources :artworks, only: %i[index show] do
-    resources :bids, only: %i[create edit update]
+    resources :bids, only: %i[create update]
   end
   resources :users, only: :show do
     resources :bids, only: :index
