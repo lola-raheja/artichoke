@@ -181,10 +181,10 @@ second_collection.save!
 puts "Finished Molly's artwork!"
 
 puts "Creating art..."
-mona = { title: "Mona Lisa", price: 90, user: joey, medium: "painting", height: 77, width: 53, year: "1503-01-01", material: "Oil on poplar panel", end_time: "2024-03-09 23:59:59" }
-scream = { title: "The Scream", price: 450, user: joey, medium: "painting", height: 91, width: 73, year: "1893-01-01", material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2024-03-08 23:59:59" }
-pitchfork = { title: "American Gothic", price: 150, user: jan, medium: "photography", height: 74, width: 62, year: "1930-01-01", material: "Oil on beaverboard", end_time: "2024-03-16 23:59:59" }
-diners = { title: "Nighthawks", price: 510, user: jan, medium: "photography", height: 84, width: 152, year: "1942-01-01", material: "Oil on canvas", end_time: "2024-03-16 23:59:59" }
+mona = { title: "Mona Lisa", price: 90, user: joey, medium: painting, height: 77, width: 53, year: "1503-01-01", material: "Oil on poplar panel", end_time: "2024-03-09 23:59:59" }
+scream = { title: "The Scream", price: 450, user: joey, medium: painting, height: 91, width: 73, year: "1893-01-01", material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2024-03-08 23:59:59" }
+pitchfork = { title: "American Gothic", price: 150, user: jan, medium: photography, height: 74, width: 62, year: "1930-01-01", material: "Oil on beaverboard", end_time: "2024-03-16 23:59:59" }
+diners = { title: "Nighthawks", price: 510, user: jan, medium: photography, height: 84, width: 152, year: "1942-01-01", material: "Oil on canvas", end_time: "2024-03-16 23:59:59" }
 [mona, scream, pitchfork, diners].each do |attributes|
   artwork = Artwork.new(attributes)
   file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
