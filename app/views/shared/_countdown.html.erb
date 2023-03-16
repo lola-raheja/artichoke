@@ -1,0 +1,7 @@
+<% if artwork.end_time.present? %>
+  <% if artwork.end_time.to_date == Time.zone.today %>
+    <span data-controller="countdown", data-countdown-date-value="<%= artwork.end_time %>" data-countdown-message-value="Auction ends today in ${hours}h ${minutes}m ${seconds}s"></span>
+  <% else %>
+    <span data-controller="countdown", data-countdown-date-value="<%= artwork.end_time %>" data-countdown-message-value="Auction ends in ${days}d ${hours}h ${minutes}m ${seconds}s"></span>
+  <% end %>
+<% end %>
