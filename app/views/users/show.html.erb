@@ -41,38 +41,45 @@
     </div>
   </div>
 <% end %>
+
 <% if @user == current_user %>
-  <div class="bids-list">
-    <h2>My bids</h2>
-    <div class="row">
-      <% if @bids.any? %>
-        <% @bids.each do |bid| %>
-          <div class="col-4 artwork-card-body">
-            <%= link_to artwork_path(bid.artwork) do %>
-              <div class="row">
-                <%= cl_image_tag bid.artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
-                <div class="artwork-card-info">
-                  <p class="artist-name"><%= bid.artwork.user.first_name %> <%= bid.artwork.user.last_name %></p>
-                  <p class="artwork-title"><%= bid.artwork.title %></h3>
-                  <p class="artwork-price">Your latest bid: <%= number_to_currency(bid.amount, unit: "£", precision: 0) %>.
-                  Highest bid: <%= number_to_currency(bid.artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
-                </div>
+  <div class="row justify-content-evenly">
+    <% if @bids.any? %>
+      <h2>My bids</h2>
+      <% @bids.each do |bid| %>
+        <div class="col-5 p-3">
+          <div class="card bid-card">
+            <div class="row p-3 justify-content-between">
+              <div class="col">
+                <%= link_to artwork_path(bid.artwork) do %>
+                  <%= cl_image_tag bid.artwork.photo.key, width: 200, crop: :fill, class: "zoomable" %>
+                <% end %>
               </div>
-            <% end %>
+              <div class="col text-end">
+                <p class="artist-name"><%= bid.artwork.user.first_name %> <%= bid.artwork.user.last_name %></p>
+                <p class="artwork-title"><%= bid.artwork.title %></p>
+                <p>Your bid: <%= number_to_currency(bid.amount, unit: "£", precision: 0) %></p>
+                <p><small class="text-muted"><%= render "shared/countdown", artwork: bid.artwork %></small></p>
+                <% if bid.artwork.end_time.past? && bid.amount == bid.artwork.bids.maximum(:amount) %>
+                  <p class="text-success">You have won the auction!</p>
+                <% elsif bid.amount == bid.artwork.bids.maximum(:amount) %>
+                  <p class="text-success">Your bid is the highest!</p>
+                  <div class="d-flex justify-content-end">
+                    <%= link_to "Edit bid", artwork_path(bid.artwork), class: "btn btn btn-outline-primary me-2" %>
+                    <%= link_to "Delete bid", bid_path(bid), class: "btn btn-primary me-0", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  </div>
+                <% else %>
+                  <p class="text-danger">You have been outbid by <%= number_to_currency(bid.artwork.bids.maximum(:amount) - bid.amount, unit: "£", precision: 0) %>!</p>
+                  <div class="d-flex justify-content-end">
+                    <%= link_to "Edit bid", artwork_path(bid.artwork), class: "btn btn btn-outline-primary me-2" %>
+                    <%= link_to "Delete bid", bid_path(bid), class: "btn btn-primary me-0", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
-        <% end %>
-      <% else %>
-        <p>No bids found.</p>
+        </div>
       <% end %>
+    <% end %>
   </div>
 <% end %>
-
-
-
-
-
-
-<%# needs user profile image %>
-<%# needs user portfoilio %>
-<%# needs past exhibitions %>
-<%# needs user artworks - in grid format, slider if poss %>
