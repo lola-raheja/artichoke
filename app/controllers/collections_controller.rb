@@ -5,8 +5,9 @@ class CollectionsController < ApplicationController
     if params[:user_location].present?
       @artworks = @artworks.joins(:user).where(users: { location: params[:user_location] })
     end
-    if params[:medium].present?
-      @artworks = @artworks.where(medium: params[:medium])
+    if params[:medium_ids].present? && params[:medium_ids].size > 1
+      # media = params[:medium_ids].map |medium_id| { Medium.find(medium_id) }
+      @artworks = @artworks.where(medium_id: params[:medium_ids])
     end
     if params[:price].present?
       price_range = params[:price].split(',')
