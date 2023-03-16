@@ -1,0 +1,20 @@
+<div class="modal fade" id="bidModal" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="bidModalLabel">Place a bid</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [artwork, bid], html: {class: "d-flex"} do |f| %>
+          <%= f.input :amount,
+              label: false,
+              placeholder: "#{number_to_currency(@highest_bid, unit: "£", precision: 0)}",
+              wrapper_html: {class: "flex-grow-1 me-3"}
+          %>
+          <%= f.submit "Submit bid", class: "btn btn-primary mb-3" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
