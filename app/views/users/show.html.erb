@@ -27,7 +27,7 @@
   <div data-controller="hello">
     <h2>Available artwork</h2>
     <div class="slider-container">
-      <a class="slider-arrow-previous" data-controller="hello" data-action="click->hello#previous"><%= image_tag "back-arrow.svg", width: 44, height: 44%></a>
+      <h3><i class="fa-solid fa-arrow-left slider-arrow-previous" data-controller="hello" data-action="click->hello#previous"></i></h3>
         <div class="slider-inner-div">
           <% @artworks.each_with_index do |artwork, index| %>
             <div class="artwork-card-body" data-pos= "<%= index %>">
@@ -37,7 +37,7 @@
             </div>
           <% end %>
       </div>
-      <a class="slider-arrow-next" data-controller="hello" data-action="click->hello#next"><%= image_tag "back-arrow.svg", width: 44, height: 44%></a>
+      <h3><i class="fa-solid fa-arrow-right slider-arrow-next" data-controller="hello" data-action="click->hello#next"></i></h3>
     </div>
   </div>
 <% end %>

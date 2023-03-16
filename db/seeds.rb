@@ -13,6 +13,7 @@ User.destroy_all
 Collection.destroy_all
 ArtworkCollection.destroy_all
 Bid.destroy_all
+Medium.destroy_all
 
 puts "Creating users..."
 
@@ -20,6 +21,16 @@ pat = User.new(first_name: "Pat", last_name: "Patterson", email: "pat@email.com"
 file = URI.open("https://source.unsplash.com/random/?male%20face")
 pat.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
 pat.save!
+
+joey = User.new(first_name: "Joey", last_name: "Artist", email: "joeyartist@email.com", password: "123456", nationality: "British", bio: "I'm a painter", date_of_birth: "1988-01-01", location: "London")
+file = URI.open("https://source.unsplash.com/random/?male%20face")
+joey.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
+joey.save!
+
+jan = User.new(first_name: "Jan", last_name: "Photographer", email: "janphotographer@email.com", password: "123456", nationality: "Slovakian", bio: "I'm a photographer", date_of_birth: "1990-01-01", location: "Berlin")
+file = URI.open("https://source.unsplash.com/random/?male%20face")
+jan.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
+jan.save!
 
 david_boatwright = User.create!(first_name: "David", last_name: "Boatwright", email: "luckyboyart@email.com",
   password: "123456", nationality: "American",
@@ -69,9 +80,23 @@ file = URI.open("https://source.unsplash.com/random/?art")
 fourth_collection.photo.attach(io: file, filename: "fourth_collection.png", content_type: "image/png")
 fourth_collection.save!
 
+puts "Creating media..."
+
+# media = ["Painting", "Photography", "Multi-media", "Sculpture", "Drawing", "Print"]
+
+# media.each do |medium|
+#   Medium.create!(medium: medium.to_s)
+# end
+
+painting = Medium.create!(medium: "Painting")
+photography = Medium.create!(medium: "Photography")
+multimedia = Medium.create!(medium: "Multi-media")
+sculpture = Medium.create!(medium: "Sculpture")
+prints = Medium.create!(medium: "Print")
+
 puts "Creating art..."
 
-funk = Artwork.new(title: "Funk (Hardest Working Man)", price: 5000, user: david_boatwright, medium: "painting",
+funk = Artwork.new(title: "Funk (Hardest Working Man)", price: 5000, user: david_boatwright, medium: painting,
 height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9932845_orig.jpg")
 funk.photo.attach(io: file, filename: "funk.jpg", content_type: "image/jpg")
@@ -79,7 +104,7 @@ funk.save!
 ArtworkCollection.create!(artwork: funk, collection: first_collection)
 first_collection.save!
 
-eleven_dollars = Artwork.new(title: "Eleven Dollars", price: 5000, user: david_boatwright, medium: "painting",
+eleven_dollars = Artwork.new(title: "Eleven Dollars", price: 5000, user: david_boatwright, medium: painting,
   height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/2947265_orig.jpg")
 eleven_dollars.photo.attach(io: file, filename: "eleven_dollars.jpg", content_type: "image/jpg")
@@ -87,49 +112,49 @@ eleven_dollars.save!
 ArtworkCollection.create!(artwork: eleven_dollars, collection: first_collection)
 first_collection.save!
 
-six_dollars = Artwork.new(title: "Six Dollars", price: 1000, user: david_boatwright, medium: "painting",
+six_dollars = Artwork.new(title: "Six Dollars", price: 1000, user: david_boatwright, medium: painting,
   height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9086013_orig.jpg")
 six_dollars.photo.attach(io: file, filename: "six_dollars.jpg", content_type: "image/jpg")
 six_dollars.save!
-ArtworkCollection.create!(artwork: six_dollars, collection: first_collection)
+ArtworkCollection.create!(artwork: six_dollars, collection: second_collection)
 first_collection.save!
 
-i_aint_know = Artwork.new(title: "I Ain't Know", price: 500, user: david_boatwright, medium: "painting",
+i_aint_know = Artwork.new(title: "I Ain't Know", price: 500, user: david_boatwright, medium: painting,
   height: 75, width: 100, year: "2020-01-01", material: "Limited edition giclee print", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_orig.jpg")
 i_aint_know.photo.attach(io: file, filename: "i_aint_know.jpg", content_type: "image/jpg")
 i_aint_know.save!
-ArtworkCollection.create!(artwork: i_aint_know, collection: first_collection)
+ArtworkCollection.create!(artwork: i_aint_know, collection: second_collection)
 first_collection.save!
 
-no_dice = Artwork.new(title: "No Dice", price: 4500, user: david_boatwright, medium: "painting",
+no_dice = Artwork.new(title: "No Dice", price: 4500, user: david_boatwright, medium: painting,
   height: 150, width: 200, year: "2017-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/img-0348_orig.jpeg")
 no_dice.photo.attach(io: file, filename: "no_dice.jpg", content_type: "image/jpg")
 no_dice.save!
-ArtworkCollection.create!(artwork: no_dice, collection: first_collection)
+ArtworkCollection.create!(artwork: no_dice, collection: third_collection)
 first_collection.save!
 
 puts "Finished David's artwork!"
 
-jesus = Artwork.new(title: "Jesus", price: 7500, user: molly_b_right, medium: "painting",
+jesus = Artwork.new(title: "Jesus", price: 7500, user: molly_b_right, medium: painting,
   height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23409048512_2962ce4fa4_b.jpg")
 jesus.photo.attach(io: file, filename: "jesus.jpg", content_type: "image/jpg")
 jesus.save!
-ArtworkCollection.create!(artwork: jesus, collection: second_collection)
+ArtworkCollection.create!(artwork: jesus, collection: first_collection)
 second_collection.save!
 
-mark_twain = Artwork.new(title: "Mark Twain", price: 7500, user: molly_b_right, medium: "painting",
+mark_twain = Artwork.new(title: "Mark Twain", price: 7500, user: molly_b_right, medium: painting,
   height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517553855_404d8d1ecd_o.jpg")
 mark_twain.photo.attach(io: file, filename: "mark_twain.jpg", content_type: "image/jpg")
 mark_twain.save!
-ArtworkCollection.create!(artwork: mark_twain, collection: second_collection)
+ArtworkCollection.create!(artwork: mark_twain, collection: first_collection)
 second_collection.save!
 
-amelia_earhart = Artwork.new(title: "Amelia Earhart", price: 7500, user: molly_b_right, medium: "painting",
+amelia_earhart = Artwork.new(title: "Amelia Earhart", price: 7500, user: molly_b_right, medium: painting,
   height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24022323322_78021decae_o.jpg")
 amelia_earhart.photo.attach(io: file, filename: "amelia_earhart.jpg", content_type: "image/jpg")
@@ -137,7 +162,7 @@ amelia_earhart.save!
 ArtworkCollection.create!(artwork: amelia_earhart, collection: second_collection)
 second_collection.save!
 
-frida_kahlo = Artwork.new(title: "Frida Kahlo", price: 7500, user: molly_b_right, medium: "painting",
+frida_kahlo = Artwork.new(title: "Frida Kahlo", price: 7500, user: molly_b_right, medium: painting,
   height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517551885_9466035078_b.jpg")
 frida_kahlo.photo.attach(io: file, filename: "frida_kahlo.jpg", content_type: "image/jpg")
@@ -145,12 +170,27 @@ frida_kahlo.save!
 ArtworkCollection.create!(artwork: frida_kahlo, collection: second_collection)
 second_collection.save!
 
-queen_elizabeth = Artwork.new(title: "Queen Elizabeth", price: 7500, user: molly_b_right, medium: "painting",
+queen_elizabeth = Artwork.new(title: "Queen Elizabeth", price: 7500, user: molly_b_right, medium: painting,
   height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24064125266_aa13a14a46_o.jpg")
 queen_elizabeth.photo.attach(io: file, filename: "queen_elizabeth.jpg", content_type: "image/jpg")
 queen_elizabeth.save!
-ArtworkCollection.create!(artwork: queen_elizabeth, collection: second_collection)
+ArtworkCollection.create!(artwork: queen_elizabeth, collection: third_collection)
 second_collection.save!
 
 puts "Finished Molly's artwork!"
+
+puts "Creating art..."
+mona = { title: "Mona Lisa", price: 90, user: joey, medium: "painting", height: 77, width: 53, year: "1503-01-01", material: "Oil on poplar panel", end_time: "2024-03-09 23:59:59" }
+scream = { title: "The Scream", price: 450, user: joey, medium: "painting", height: 91, width: 73, year: "1893-01-01", material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2024-03-08 23:59:59" }
+pitchfork = { title: "American Gothic", price: 150, user: jan, medium: "photography", height: 74, width: 62, year: "1930-01-01", material: "Oil on beaverboard", end_time: "2024-03-16 23:59:59" }
+diners = { title: "Nighthawks", price: 510, user: jan, medium: "photography", height: 84, width: 152, year: "1942-01-01", material: "Oil on canvas", end_time: "2024-03-16 23:59:59" }
+[mona, scream, pitchfork, diners].each do |attributes|
+  artwork = Artwork.new(attributes)
+  file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
+  artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
+  artwork.save!
+  puts "Created #{artwork.title}"
+  ArtworkCollection.create!(artwork: artwork, collection: third_collection)
+  ArtworkCollection.create!(artwork: artwork, collection: fourth_collection)
+end
