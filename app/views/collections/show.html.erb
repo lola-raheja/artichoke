@@ -13,7 +13,7 @@
         </div>
         <div>
           <%= f.label(:medium, "Medium:") %>
-          <%= f.select(:medium, options_for_select(@collection.artworks.pluck(:medium).uniq, params[:medium]), include_blank: true) %>
+          <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :medium %>
         </div>
         <div>
           <%= f.label(:price, 'Price:') %>
