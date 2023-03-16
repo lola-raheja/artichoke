@@ -13,18 +13,23 @@
   <div class="col-5 me-auto justify-content-center">
     <div class="d-flex align-items-center">
       <div class="p-2">
-        <% if @artwork.user.photo.attached? %>
-          <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-smaller" %>
-        <% else %>
-          <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-smaller" %>
-        <% end %>
-      </div>
-      <div class="p-2">
-        <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
-        <p>Location: <%= @artwork.user.location %></p>
+        <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}",  @artwork.user, style: "text-decoration: none"%></h2>
+        <div class="d-flex">
+          <% if @artwork.user.photo.attached? %>
+            <%= link_to @artwork.user do %>
+              <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-smaller" %>
+            <% end %>
+          <% else %>
+            <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-smaller" %>
+          <% end %>
+          <div class="p-2">
+            <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
+            <p>Location: <%= @artwork.user.location %></p>
+          </div>
+        </div>
       </div>
     </div>
-    <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}",  @artwork.user, style: "text-decoration: none"%></h2>
+    <div style="width: 267px">
     <h3><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h3>
     <p><%= @artwork.material %></p>
     <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
@@ -46,11 +51,12 @@
         <% end %>
       <% end %>
     </p>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
+    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
     <%#= simple_form_for [@artwork, @bid] do |f| %>
       <%#= f.input :amount, input_html: { style: 'width: 300px;' } %>
       <%#= f.submit "Submit bid", class: "btn btn-primary" %>
     <%# end %>
+    </div>
   </div>
 </div>
 
