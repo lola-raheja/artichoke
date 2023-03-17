@@ -5,7 +5,16 @@
 }
 
 .filter-parameter-container {
-  display: inline-flex;
-  justify-content: space-between;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-row {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px;
+}
+
+.filter-class {
+  color: red;
 }
