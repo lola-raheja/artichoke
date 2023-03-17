@@ -118,7 +118,7 @@ second_collection.photo.attach(io: file, filename: "second_collection.png", cont
 second_collection.save!
 third_collection = Collection.create!(title: "Bonafide Artists", description: "These artists have been vetted by the art market.
   While they have gallery representation or have exhibited their work, their sales on Artichoke are independent.")
-file = URI.open("https://source.unsplash.com/random/?art")
+file = URI.open("https://shop.fondationbeyeler.ch/artikel/normal/16926_001.jpg")
 third_collection.photo.attach(io: file, filename: "third_collection.png", content_type: "image/png")
 third_collection.save!
 fourth_collection = Collection.create!(title: "Decorative Yet Evocative", description: "Art that feeds the mind as well as the eyes.")
@@ -226,7 +226,7 @@ third_collection.save!
 
 puts "Finished Molly's artwork!"
 
-puts "Creating fake art..."
+puts "Creating fake art for New & Noteworthy..."
 balcoon = { title: "Balcoon", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
 nem_kaldi = { title: "Nem Kaldi", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
@@ -235,7 +235,15 @@ wechat = { title: "WeChat", price: 150, user: asim_rafiqui, medium: sculpture, h
   year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
 the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
-[balcoon, nem_kaldi, wechat, the_boss].each do |attributes|
+lau_ma_al_mahaba = { title: "Lau Ma al-Mahaba", price: 90, user: dima_srouji, medium: photography, height: 77, width: 53, year: "2018-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+temps_de_pluja = { title: "Temps de Pluja", price: 450, user: dixie_dunbar, medium: prints, height: 91, width: 73, year: "2015-01-01",
+  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+akhaduhu_mini_urah = { title: "Akhaduhu Mini Urah", price: 150, user: alex_atack, medium: sculpture, height: 74, width: 62,
+  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+nellacqua = { title: "Nell'acqua della chiara fontana", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
+  material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
+[balcoon, nem_kaldi, wechat, the_boss, lau_ma_al_mahaba, temps_de_pluja, akhaduhu_mini_urah, nellacqua].each do |attributes|
   artwork = Artwork.new(attributes)
   file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
   artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
@@ -244,32 +252,50 @@ the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting
   ArtworkCollection.create!(artwork: artwork, collection: first_collection)
 end
 
-balcoon = { title: "Balcoon", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
+puts "Creating fake art for Vibrant Vibes..."
+ikimiz = { title: "Ikimiz bir Fidaniz", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
-nem_kaldi = { title: "Nem Kaldi", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
+nonstop = { title: "Nonstop", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
   material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
-wechat = { title: "WeChat", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
+oi_sermuksnio = { title: "Oi Sermuksnio", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
   year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
-the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
+a_paris = { title: "A Paris", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
-[balcoon, nem_kaldi, wechat, the_boss].each do |attributes|
+paloma_negra = { title: "Paloma Negra", price: 90, user: dima_srouji, medium: photography, height: 77, width: 53, year: "2018-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+wind_of_change = { title: "Wind of Change", price: 450, user: dixie_dunbar, medium: prints, height: 91, width: 73, year: "2015-01-01",
+  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+chal_akela = { title: "Chal Akela", price: 150, user: alex_atack, medium: sculpture, height: 74, width: 62,
+  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+mafatshi_leh = { title: "Mafatshi Leh", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
+  material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
+[ikimiz, nonstop, oi_sermuksnio, a_paris, paloma_negra, wind_of_change, chal_akela, mafatshi_leh].each do |attributes|
   artwork = Artwork.new(attributes)
-  file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
+  file = URI.open("https://source.unsplash.com/random/?color #{attributes[:title]}")
   artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
   artwork.save!
   puts "Created #{artwork.title}"
   ArtworkCollection.create!(artwork: artwork, collection: second_collection)
 end
 
-balcoon = { title: "Balcoon", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
+puts "Creating fake art for Decorative Yet Evocative..."
+zum_zum = { title: "Zum-Zum", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
-nem_kaldi = { title: "Nem Kaldi", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
+pochelovat = { title: "Pochelovat", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
   material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
-wechat = { title: "WeChat", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
+howzat = { title: "Howzat", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
   year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
-the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
+sugar_man = { title: "Sugar Man", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
-[balcoon, nem_kaldi, wechat, the_boss].each do |attributes|
+what_a_life = { title: "What A Life", price: 90, user: dima_srouji, medium: photography, height: 77, width: 53, year: "2018-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+mano = { title: "MANO", price: 450, user: dixie_dunbar, medium: prints, height: 91, width: 73, year: "2015-01-01",
+  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+tgoul_maaraft = { title: "Tgoul Maaraft", price: 150, user: alex_atack, medium: sculpture, height: 74, width: 62,
+  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+carolans = { title: "Carolan's Air", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
+  material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
+[zum_zum, pochelovat, howzat, sugar_man, what_a_life, mano, tgoul_maaraft, carolans].each do |attributes|
   artwork = Artwork.new(attributes)
   file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
   artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
