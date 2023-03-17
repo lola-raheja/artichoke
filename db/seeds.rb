@@ -242,7 +242,38 @@ the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting
   artwork.save!
   puts "Created #{artwork.title}"
   ArtworkCollection.create!(artwork: artwork, collection: first_collection)
+end
+
+balcoon = { title: "Balcoon", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+nem_kaldi = { title: "Nem Kaldi", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
+  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+wechat = { title: "WeChat", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
+  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
+  material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
+[balcoon, nem_kaldi, wechat, the_boss].each do |attributes|
+  artwork = Artwork.new(attributes)
+  file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
+  artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
+  artwork.save!
+  puts "Created #{artwork.title}"
   ArtworkCollection.create!(artwork: artwork, collection: second_collection)
-  ArtworkCollection.create!(artwork: artwork, collection: third_collection)
+end
+
+balcoon = { title: "Balcoon", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+nem_kaldi = { title: "Nem Kaldi", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
+  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+wechat = { title: "WeChat", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
+  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
+  material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
+[balcoon, nem_kaldi, wechat, the_boss].each do |attributes|
+  artwork = Artwork.new(attributes)
+  file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
+  artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
+  artwork.save!
+  puts "Created #{artwork.title}"
   ArtworkCollection.create!(artwork: artwork, collection: fourth_collection)
 end
