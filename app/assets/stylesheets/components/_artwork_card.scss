@@ -36,8 +36,9 @@
 .artwork-card-flexbox {
   display: inline-flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   max-height: 1600px;
   width: 100%;
+  margin: 24px;
 }
