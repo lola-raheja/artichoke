@@ -1,4 +1,4 @@
-<div>
+<div class="page-container">
   <div>
     <h1><%= @collection.title %></h1>
     <p class="lead"><%= @collection.description %></p>
@@ -40,11 +40,11 @@
     <% end %>
   </div>
   <div>
-    <div class="row">
+    <div class="artwork-card-flexbox">
       <% @artworks.each do |artwork| %>
         <div class="artwork-card-body">
           <%= link_to artwork_path(artwork) do %>
-              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+              <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
               <div class="artwork-card-info">
                 <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
                 <p class="artwork-title"><%= artwork.title %></p>
