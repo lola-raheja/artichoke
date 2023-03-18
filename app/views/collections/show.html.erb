@@ -1,47 +1,50 @@
-<div>
+<div class="page-container">
   <div>
     <h1><%= @collection.title %></h1>
     <p class="lead"><%= @collection.description %></p>
   </div>
   <div class="filter-container">
-    <p>Filter by</p>
     <%= form_with url: collection_path(@collection), method: :get do |f| %>
       <div class="filter-parameter-container">
-        <div>
-          <%= f.label(:user_location, "Location:") %>
-          <%= f.select(:user_location, options_for_select(@collection.artworks.joins(:user).pluck(:location).uniq, params[:user_location]), include_blank: true) %>
+        <div class="filter-row">
+          <div>
+            <%= f.label(:user_location, "Location:") %>
+            <%= f.select(:user_location, options_for_select(@collection.artworks.joins(:user).pluck(:location).uniq, params[:user_location]), class: "filter-class", include_blank: true) %>
+          </div>
+          <div>
+            <%= f.label(:price, 'Price:') %>
+            <%= f.select(:price, options_for_select([
+              ['Under £100', '0,99'],
+              ['£100 - £299', '100,299'],
+              ['£300 - £499', '300,499'],
+              ['£500 - £999', '500,999'],
+              ['£1000 - £1,499', '1000,1499'],
+              ['Over £1,500', '1500,999999999']
+            ], (params[:price])), include_blank: true) %>
+          </div>
+          <div>
+            <%= f.label(:size, 'Size:') %>
+            <%= f.select(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
+          </div>
         </div>
-        <div>
-          <%= f.label(:medium, "Medium:") %>
-          <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :medium %>
-        </div>
-        <div>
-          <%= f.label(:price, 'Price:') %>
-          <%= f.select(:price, options_for_select([
-            ['Under £100', '0,99'],
-            ['£100 - £299', '100,299'],
-            ['£300 - £499', '300,499'],
-            ['£500 - £999', '500,999'],
-            ['£1000 - £1,499', '1000,1499'],
-            ['Over £1,500', '1500,999999999']
-          ], (params[:price])), include_blank: true) %>
-        </div>
-        <div>
-          <%= f.label(:size, 'Size:') %>
-          <%= f.select(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
-        </div>
-        <div>
-          <%= f.submit "Filter", class: "btn btn-primary" %>
+        <div class= "filter-row">
+          <div>
+            <%= f.label(:medium, "Medium:") %>
+            <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :medium %>
+          </div>
+          <div>
+            <%= f.submit "Filter", class: "btn btn-primary" %>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
   <div>
-    <div class="row">
+    <div class="artwork-card-flexbox">
       <% @artworks.each do |artwork| %>
         <div class="artwork-card-body">
           <%= link_to artwork_path(artwork) do %>
-              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
+              <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
               <div class="artwork-card-info">
                 <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
                 <p class="artwork-title"><%= artwork.title %></p>

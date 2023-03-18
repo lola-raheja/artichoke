@@ -25,10 +25,20 @@
 }
 
 .artwork-card-body {
-  width: 400px;
+  width: 320px;
 }
 
 .artwork-card-body a {
   text-decoration: none;
   color: inherit;
+}
+
+.artwork-card-flexbox {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-height: 1600px;
+  width: 100%;
+  margin: 24px;
 }
