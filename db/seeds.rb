@@ -111,13 +111,12 @@ first_collection = Collection.new(title: "New & Noteworthy", description: "Our c
 file = URI.open("https://source.unsplash.com/random/?contemporaryart")
 first_collection.photo.attach(io: file, filename: "first_collection.png", content_type: "image/png")
 first_collection.save!
-second_collection = Collection.create!(title: "Vibrant Vibes", description: "Craving color? These artists take a fearless
-  approach with their use of color.")
+second_collection = Collection.create!(title: "Vibrant Vibes", description: "Craving colour? These artists take a fearless
+  approach with their use of colour.")
 file = URI.open("https://source.unsplash.com/random/?color")
 second_collection.photo.attach(io: file, filename: "second_collection.png", content_type: "image/png")
 second_collection.save!
-third_collection = Collection.create!(title: "Bonafide Artists", description: "These artists have been vetted by the art market.
-  While they have gallery representation or have exhibited their work, their sales on Artichoke are independent.")
+third_collection = Collection.create!(title: "Bonafide Artists", description: "These artists have been vetted by the art market, however their sales on Artichoke are independent.")
 file = URI.open("https://shop.fondationbeyeler.ch/artikel/normal/16926_001.jpg")
 third_collection.photo.attach(io: file, filename: "third_collection.png", content_type: "image/png")
 third_collection.save!

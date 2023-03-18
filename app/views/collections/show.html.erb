@@ -6,50 +6,54 @@
   <div class="filter-container">
     <%= form_with url: collection_path(@collection), method: :get do |f| %>
       <div class="filter-parameter-container">
-        <div class="filter-row">
-          <div>
-            <%= f.label(:user_location, "Location:") %>
-            <%= f.select(:user_location, options_for_select(@collection.artworks.joins(:user).pluck(:location).uniq, params[:user_location]), class: "filter-class", include_blank: true) %>
-          </div>
-          <div>
-            <%= f.label(:price, 'Price:') %>
-            <%= f.select(:price, options_for_select([
-              ['Under £100', '0,99'],
-              ['£100 - £299', '100,299'],
-              ['£300 - £499', '300,499'],
-              ['£500 - £999', '500,999'],
-              ['£1000 - £1,499', '1000,1499'],
-              ['Over £1,500', '1500,999999999']
-            ], (params[:price])), include_blank: true) %>
-          </div>
-          <div>
-            <%= f.label(:size, 'Size:') %>
-            <%= f.select(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
-          </div>
+        <div class="filter-type">
+          <%= f.label :user_location, "Location", class: "filter-label" %>
+          <%= f.select :user_location, options_for_select(@collection.artworks.joins(:user).pluck(:location).uniq, params[:user_location]), include_blank: true %>
         </div>
-        <div class= "filter-row">
-          <div>
-            <%= f.label(:medium, "Medium:") %>
-            <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :medium %>
-          </div>
-          <div>
-            <%= f.submit "Filter", class: "btn btn-primary" %>
-          </div>
+        <div class="filter-type">
+          <%= f.label :price, class: "filter-label" %>
+          <%= f.select :price, options_for_select([
+            ['Under £100', '0,99'],
+            ['£100 - £299', '100,299'],
+            ['£300 - £499', '300,499'],
+            ['£500 - £999', '500,999'],
+            ['£1000 - £1,499', '1000,1499'],
+            ['Over £1,500', '1500,999999999']
+          ], (params[:price])), include_blank: true %>
+        </div>
+        <div class="filter-type">
+          <%= f.label :size, class: "filter-label" %>
+          <%= f.select :size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true %>
+        </div>
+        <div class="filter-type">
+          <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :medium do |b| %>
+            <%= b.label do %>
+              <%= b.check_box + b.text %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="filter-type">
+          <%= f.submit "Filter", class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>
   </div>
   <div>
+    <p class ="mt-3"><%= pluralize @artworks.count, "Artwork" %></p>
     <div class="artwork-card-flexbox">
       <% @artworks.each do |artwork| %>
         <div class="artwork-card-body">
           <%= link_to artwork_path(artwork) do %>
-              <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
-              <div class="artwork-card-info">
-                <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
-                <p class="artwork-title"><%= artwork.title %></p>
+            <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
+            <div class="artwork-card-info">
+              <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+              <p class="artwork-title"><%= artwork.title %></p>
+              <% if artwork.bids.exists? %>
+                <p class="artwork-price"><%= number_to_currency(artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
+              <% else %>
                 <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
-              </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       <% end %>
