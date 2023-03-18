@@ -1,7 +1,6 @@
 <div>
   <div>
     <h1>Browse artworks</h1>
-    <p><%= pluralize @artworks.count, "Artwork" %></p>
   </div>
   <div class="filter-container">
     <p>Filter by</p>
@@ -37,19 +36,28 @@
     <% end %>
   </div>
   <div>
-    <div class="row">
-      <% @artworks.each do |artwork| %>
-        <div class="artwork-card-body">
-          <%= link_to artwork_path(artwork) do %>
-              <%= cl_image_tag artwork.photo.key, width: 400, crop: :fill, class: "zoomable" %>
-              <div class="artwork-card-info">
-                <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
-                <p class="artwork-title"><%= artwork.title %></p>
-                <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
-              </div>
-          <% end %>
-        </div>
+    <% @columns.each do |column| %>
+      <%column.each do |artwork| %>
+        <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
+        <p class="artist-name"><%= artwork.user.first_name %><% artwork.user.last_name %></p>
       <% end %>
-    </div>
-  </div>
+    <% end %>
+
+
+    <%# <div class="artwork-card-flexbox">
+      <% @artworks.each do |artwork| %>
+        <%# <div class="artwork-card-body"> %>
+          <%# <%= link_to artwork_path(artwork) do %>
+              <%# <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
+              <%# <div class="artwork-card-info"> %>
+                <%# <p class="artist-name"><%= artwork.user.first_name %>
+                <%# <%= artwork.user.last_name</p> %>
+                <%# <p class="artwork-title"><%= artwork.title</p> %>
+                <%# <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0)</p> %>
+              <%# </div> %>
+          <%# <% end %>
+        <%# </div> %>
+      <%# <% end %>
+    <%# </div> %>
+  <%# </div/> %>
 </div>
