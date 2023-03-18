@@ -295,7 +295,7 @@ tgoul_maaraft = { title: "Tgoul Maaraft", price: 150, user: alex_atack, medium: 
   year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
 carolans = { title: "Carolan's Air", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
-zum_zum, pochelovat, howzat, sugar_man, what_a_life, mano, tgoul_maaraft, carolans].each do |attributes|
+[zum_zum, pochelovat, howzat, sugar_man, what_a_life, mano, tgoul_maaraft, carolans].each do |attributes|
   artwork = Artwork.new(attributes)
   file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
   artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
