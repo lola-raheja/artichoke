@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
 
   def assign_to_column(artworks)
     artworks_array = artworks.in_groups(3)
