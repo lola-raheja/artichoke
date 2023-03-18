@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
     @artworks = params[:query].present? ? Artwork.global_search(params[:query]) : Artwork.order(title: :asc)
     if params[:user_location].present?

@@ -1,4 +1,5 @@
 class CollectionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :show
   def show
     @collection = Collection.find(params[:id])
     @artworks = @collection.artworks.order(title: :asc)
