@@ -1,12 +1,21 @@
 class BidsController < ApplicationController
   before_action :set_artwork, only: [:create]
 
+  def show
+    @bid = Bid.find(params[:id])
+    @artworks = @bid.artwork.user.artworks.where.not(id: @bid.artwork.id)
+    @artwork = @artworks.present? ? @artworks.sample : nil
+    @collections = @bid.artwork.collections
+    @collection = @collections.present? ? @collections.sample : nil
+    @highest_bid = @bid.amount
+  end
+
   def create
     @bid = Bid.new(bid_params)
     @bid.artwork = @artwork
     @bid.user = current_user
     if @bid.save
-      redirect_to artwork_path(@artwork), notice: "Bid was successfully made."
+      redirect_to bid_path(@bid), notice: "Bid was successfully made."
     else
       render 'artworks/show', notice: "Bid was not made."
     end
@@ -15,13 +24,17 @@ class BidsController < ApplicationController
   def destroy
     @bid = Bid.find(params[:id])
     @bid.destroy
-    redirect_to artwork_path(@bid.artwork)
+    redirect_to artwork_path(@bid.artwork), notice: "Bid deleted."
+  end
+
+  def edit
+    @bid = Bid.find(params[:id])
   end
 
   def update
     @bid = Bid.find(params[:id])
     @bid.update(bid_params)
-    redirect_to artwork_path(@bid.artwork)
+    redirect_to bid_path(@bid), notice: "Bid was edited."
   end
 
   private
