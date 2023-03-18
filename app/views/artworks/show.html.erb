@@ -1,11 +1,11 @@
 <div class="row mt-5">
-<%= link_to root_path do %>
-   <%= image_tag "back-arrow.svg", width: 44, height: 44, class: "back-arrow" %>
-   <% end %>
   <div class="col-5 me-auto">
-      <div class="d-flex align-items-center justify-content-center">
-        <h2><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h2>
-      </div>
+    <div class="d-flex align-items-center justify-content-center">
+      <%= link_to :back do %>
+        <i class="fa-solid fa-arrow-left fa-2x"></i>
+      <% end %>
+      <h2><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h2>
+    </div>
     <div class="d-flex align-items-center justify-content-center">
       <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-height: calc(80vh); max-width: 100%;" %>
     </div>

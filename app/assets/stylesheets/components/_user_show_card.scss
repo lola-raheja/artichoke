@@ -1,6 +1,6 @@
 .flexbox {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .user-profile-card {
@@ -31,4 +31,13 @@
 
 .bio-card {
   text-align: justify;
+}
+
+.bid-card {
+  height: 280px;
+}
+
+.bid-card img {
+  max-height: 66%;
+  object-fit: contain;
 }

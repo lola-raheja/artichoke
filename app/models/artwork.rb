@@ -8,9 +8,10 @@ class Artwork < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :title, :medium ],
+  against: :title ,
   associated_against: {
-    user: [ :first_name, :last_name ]
+    user: [ :first_name, :last_name ],
+    medium: :medium
   },
   using: {
     tsearch: { prefix: true }

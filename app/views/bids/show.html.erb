@@ -10,6 +10,7 @@
         <%= link_to artwork_path(@bid.artwork), style: "text-decoration: none" do %>
           <%= cl_image_tag @bid.artwork.photo.key, width: 200, crop: :fill, class: "zoomable" %>
           <p><i class="fa-solid fa-arrow-left mt-3"></i> Back to artwork<p>
+          <%= link_to "Your account", user_path(current_user), class: "text-decoration-none" %>
         <% end %>
       </div>
       <div class="col text-end">
