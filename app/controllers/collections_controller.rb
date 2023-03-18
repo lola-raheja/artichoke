@@ -1,4 +1,12 @@
 class CollectionsController < ApplicationController
+  def assign_to_column(artworks)
+    artworks_array = artworks.in_groups(3)
+    column_1 = artworks_array[0].compact
+    column_2 = artworks_array[1].compact
+    column_3 = artworks_array[2].compact
+    @columns = [column_1, column_2, column_3]
+  end
+
   def show
     @collection = Collection.find(params[:id])
     @artworks = @collection.artworks.order(title: :asc)
