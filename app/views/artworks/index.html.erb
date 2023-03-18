@@ -37,14 +37,13 @@
       </div>
     <% end %>
   </div>
-  <div>
-    <p class ="mt-3"><%= pluralize @artworks.count, "Artwork" %></p>
-    <div class="artwork-card-flexbox">
-      <% @artworks.each do |artwork| %>
-        <div class="artwork-card-body">
-          <%= link_to artwork_path(artwork) do %>
-            <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
-            <div class="artwork-card-info">
+  <div class="artwork-column-container">
+    <% @columns.each do |column| %>
+      <div class="column-flex">
+        <%column.each do |artwork| %>
+          <div class="artwork-card-body">
+            <%= link_to artwork_path(artwork) do %>
+              <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
               <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
               <p class="artwork-title"><%= artwork.title %></p>
               <% if artwork.bids.exists? %>
@@ -52,10 +51,9 @@
               <% else %>
                 <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0) %></p>
               <% end %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 </div>

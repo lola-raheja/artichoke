@@ -26,6 +26,11 @@
 
 .artwork-card-body {
   width: 320px;
+  padding: 4px;
+}
+
+.artwork-card-body p {
+  margin-bottom: 0px;
 }
 
 .artwork-card-body a {
@@ -33,12 +38,13 @@
   color: inherit;
 }
 
-.artwork-card-flexbox {
-  display: inline-flex;
-  flex-direction: column;
+.artwork-column-container {
+  display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  max-height: 1600px;
-  width: 100%;
   margin: 24px;
+}
+
+.column-flex {
+  display: flex;
+  flex-direction: column;
 }
