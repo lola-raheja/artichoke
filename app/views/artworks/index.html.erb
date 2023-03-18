@@ -39,8 +39,14 @@
     <% @columns.each do |column| %>
       <div class="column-flex">
         <%column.each do |artwork| %>
-          <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
-          <p class="artist-name"><%= artwork.user.first_name %><%= artwork.user.last_name %></p>
+          <div class="artwork-card-body">
+            <%= link_to artwork_path(artwork) do %>
+              <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
+              <p class="artist-name"><%= artwork.user.first_name %> <%= artwork.user.last_name %></p>
+              <p class="artwork-title"><%= artwork.title %></p>
+              <p class="artwork-price"><%= number_to_currency(artwork.price, unit: "£", precision: 0)%></p>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>
