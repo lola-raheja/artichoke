@@ -1,4 +1,8 @@
-<div>
+<% content_for :meta_title, "#{@collection.title} | Collections | #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @collection.description %>
+<% content_for :meta_image, cl_image_path(@collection.photo.key) %>
+
+<div class="page-container">
   <div>
     <h1><%= @collection.title %></h1>
     <p class="lead"><%= @collection.description %></p>
