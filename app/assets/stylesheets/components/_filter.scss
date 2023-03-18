@@ -1,20 +1,64 @@
 .filter-container {
   border: 1px solid $artichoke-purple;
   border-radius: 4px;
-  padding: 16px;
+  padding: 8px 16px;
 }
 
 .filter-parameter-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .filter-row {
   display: flex;
-  justify-content: space-evenly;
-  padding: 16px;
+  justify-content: center;
+  padding: 8px;
 }
 
-.filter-class {
-  color: red;
+.filter-type {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 80px;
+  column-gap: 4px;
+
+  input[type="checkbox"] {
+    margin-right: 4px;
+  }
+}
+
+.filter-label {
+  color: $artichoke-purple;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+#user_location {
+  border: 1px solid $artichoke-purple;
+  border-radius: 4px;
+  color: $artichoke-grey;
+  background-color: #f7f7f7;
+  padding: 0px 4px;
+  width: 160px
+}
+
+#price {
+  border: 1px solid $artichoke-purple;
+  border-radius: 4px;
+  color: $artichoke-grey;
+  background-color: #f7f7f7;
+  padding: 0px 4px;
+  width: 160px
+}
+
+#size {
+  border: 1px solid $artichoke-purple;
+  border-radius: 4px;
+  color: $artichoke-grey;
+  background-color: #f7f7f7;
+  padding: 0px 4px;
+  width: 160px
 }
