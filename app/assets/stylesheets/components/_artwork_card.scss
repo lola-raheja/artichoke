@@ -34,14 +34,9 @@
 }
 
 .artwork-column-container {
-  display: flex
-  // display: inline-flex;
-  // flex-direction: column;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
-  // max-height: 1600px;
-  // width: 100%;
-  // margin: 24px;
+  display: flex;
+  justify-content: space-between;
+  margin: 24px;
 }
 
 .column-flex {
