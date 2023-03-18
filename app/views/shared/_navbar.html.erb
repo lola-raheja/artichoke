@@ -3,9 +3,14 @@
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo.svg", alt: "Artichoke logo" %>
     <% end %>
-    <%= form_with url: artworks_path, method: :get, class: "search-bar" do |f| %>
-      <%= f.text_field :query, class: "form-control search-input", placeholder: "🔎 Discover artwork from independent artists" %>
+    <div class="search-container">
+      <%= form_with url: artworks_path, method: :get, class: "search-bar" do |f| %>
+        <div class="search-input-container d-flex flex-row align-items-center">
+          <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+          <%= f.text_field :query, class: "form-control search-input", placeholder: "Discover artwork from independent artists" %>
+        </div>
     <% end %>
+    </div>
     <% if user_signed_in? %>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <div class="d-flex align-items-center">
