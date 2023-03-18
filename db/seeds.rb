@@ -108,20 +108,20 @@ sonia_brewin = User.create!(first_name: "Sonia", last_name: "Brewin", email: "so
 puts "Creating collections..."
 first_collection = Collection.new(title: "New & Noteworthy", description: "Our curators gather their top picks of the
   newest artists to join Artichoke.")
-file = URI.open("https://source.unsplash.com/random/?contemporaryart")
+file = URI.open("https://images.squarespace-cdn.com/content/v1/59450d6086e6c048e86a4792/1578636941591-0MC0U10E9OSN6UDKPIOY/Osmosis.jpg?format=1000w")
 first_collection.photo.attach(io: file, filename: "first_collection.png", content_type: "image/png")
 first_collection.save!
 second_collection = Collection.create!(title: "Vibrant Vibes", description: "Craving colour? These artists take a fearless
   approach with their use of colour.")
-file = URI.open("https://source.unsplash.com/random/?color")
+file = URI.open("https://cdn.booooooom.com/wp-content/uploads/2023/01/Summer-Rockers-2022-15x22-oil-pastel-color-pencil.jpg")
 second_collection.photo.attach(io: file, filename: "second_collection.png", content_type: "image/png")
 second_collection.save!
 third_collection = Collection.create!(title: "Bonafide Artists", description: "These artists have been vetted by the art market, however their sales on Artichoke are independent.")
-file = URI.open("https://shop.fondationbeyeler.ch/artikel/normal/16926_001.jpg")
+file = URI.open("https://img.freepik.com/free-vector/flat-design-matisse-style-illustration_23-2149556378.jpg?w=2000")
 third_collection.photo.attach(io: file, filename: "third_collection.png", content_type: "image/png")
 third_collection.save!
 fourth_collection = Collection.create!(title: "Decorative Yet Evocative", description: "Art that feeds the mind as well as the eyes.")
-file = URI.open("https://source.unsplash.com/random/?art")
+file = URI.open("https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2F69e8da48-cc00-11e9-a5c5-eeafb66e7c98.jpg?crop=2667%2C1500%2C0%2C0")
 fourth_collection.photo.attach(io: file, filename: "fourth_collection.png", content_type: "image/png")
 fourth_collection.save!
 
