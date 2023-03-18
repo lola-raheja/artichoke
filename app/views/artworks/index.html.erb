@@ -35,12 +35,14 @@
       </div>
     <% end %>
   </div>
-  <div>
+  <div class="artwork-column-container">
     <% @columns.each do |column| %>
-      <%column.each do |artwork| %>
-        <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
-        <p class="artist-name"><%= artwork.user.first_name %><% artwork.user.last_name %></p>
-      <% end %>
+      <div class="column-flex">
+        <%column.each do |artwork| %>
+          <%= cl_image_tag artwork.photo.key, width: 320, crop: :fill, class: "zoomable" %>
+          <p class="artist-name"><%= artwork.user.first_name %><%= artwork.user.last_name %></p>
+        <% end %>
+      </div>
     <% end %>
 
 

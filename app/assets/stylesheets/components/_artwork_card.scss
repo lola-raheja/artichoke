@@ -33,12 +33,18 @@
   color: inherit;
 }
 
-.artwork-card-flexbox {
-  display: inline-flex;
+.artwork-column-container {
+  display: flex
+  // display: inline-flex;
+  // flex-direction: column;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  // max-height: 1600px;
+  // width: 100%;
+  // margin: 24px;
+}
+
+.column-flex {
+  display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-height: 1600px;
-  width: 100%;
-  margin: 24px;
 }
