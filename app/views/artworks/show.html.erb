@@ -35,27 +35,28 @@
     </div>
     <br>
     <div style="width: 267px">
-    <p style="font-size:24px"><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></p>
-    <p style="font-size:18px"><%= @artwork.height %> x <%= @artwork.width %> cm <p style="font-size:18px"> <%= @artwork.material %></p></p>
-    <% if @artwork.end_time.future? %>
-      <% if @artwork.bids.exists? %>
-        <p>Highest bid:</p>
-        <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></h4>
-        <% if @artwork.bids.exists?(user: current_user) %>
-          <h4><small class=>Your bid:</small>
-          <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %></h4>
-          <button type="button" class="btn btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#bidModal">Edit bid</button>
-          <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <p style="font-size:24px"><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></p>
+      <p style="font-size:18px"><%= @artwork.height %> x <%= @artwork.width %> cm <p style="font-size:18px"> <%= @artwork.material %></p></p>
+      <% if @artwork.end_time.future? %>
+        <% if @artwork.bids.exists? %>
+          <p>Highest bid:</p>
+          <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></h4>
+          <% if @artwork.bids.exists?(user: current_user) %>
+            <h4><small class=>Your bid:</small>
+            <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %></h4>
+            <button type="button" class="btn btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#bidModal">Edit bid</button>
+            <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <% else %>
+            <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
+          <% end %>
         <% else %>
+          <p style="font-size:24px">Starting price:
+          <%= number_to_currency(@artwork.price, unit: "£", precision: 0) %></p>
           <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
         <% end %>
-      <% else %>
-        <p style="font-size:24px">Starting price:
-        <%= number_to_currency(@artwork.price, unit: "£", precision: 0) %></p>
-        <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
       <% end %>
-    <% end %>
     <h4><%= render "shared/countdown", artwork: @artwork %></h4>
+    </div>
   </div>
 </div>
 
