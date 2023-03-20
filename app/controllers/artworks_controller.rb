@@ -52,5 +52,7 @@ class ArtworksController < ApplicationController
     @artwork = Artwork.find(params[:id])
     @highest_bid = @artwork.bids.maximum(:amount) || @artwork.price
     @bid = @artwork.bids.find_by(user: current_user) || Bid.new
+    @collections = @artwork.collections
+    @collection = @collections.present? ? @collections.sample : nil
   end
 end
