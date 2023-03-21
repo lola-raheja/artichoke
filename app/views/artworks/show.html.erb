@@ -2,60 +2,80 @@
 <% content_for :meta_description, "Bid for this artwork, sold directly by #{@artwork.user}" %>
 <% content_for :meta_image, cl_image_path(@artwork.photo.key) %>
 
-<div class="row mt-5">
-  <div class="col-5 me-auto">
-    <div class="d-flex align-items-center justify-content-center">
+<div class="row mt-2">
+  <div class="col-sm-6 me-auto">
+    <div class="d-flex align-items-center justify-content-between">
       <%= link_to :back do %>
         <i class="fa-solid fa-arrow-left fa-2x"></i>
       <% end %>
-      <h2><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h2>
-    </div>
-    <div class="d-flex align-items-center justify-content-center">
-      <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-height: calc(80vh); max-width: 100%;" %>
-    </div>
-  </div>
-  <div class="col-5 me-auto justify-content-center">
-    <div class="d-flex align-items-center">
-      <div class="p-2">
-        <h2><%= link_to "#{@artwork.user.first_name} #{@artwork.user.last_name}",  @artwork.user, style: "text-decoration: none"%></h2>
-        <div class="d-flex">
-          <% if @artwork.user.photo.attached? %>
-            <%= link_to @artwork.user do %>
-              <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-smaller" %>
-            <% end %>
-          <% else %>
-            <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-smaller" %>
-          <% end %>
-          <div class="p-2">
-            <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
-            <p>Location: <%= @artwork.user.location %></p>
-          </div>
-        </div>
+      <div class="d-flex align-items-center">
+        <h1 style="font-size:32px"><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h1>
       </div>
     </div>
-    <br>
-    <div style="width: 267px">
-      <p style="font-size:24px"><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></p>
-      <p style="font-size:18px"><%= @artwork.height %> x <%= @artwork.width %> cm <p style="font-size:18px"> <%= @artwork.material %></p></p>
-      <% if @artwork.end_time.future? %>
-        <% if @artwork.bids.exists? %>
-          <p>Highest bid:</p>
-          <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></h4>
+    <div class="d-flex align-items-center justify-content-center mx-auto">
+      <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-width: 100%;" %>
+    </div>
+  </div>
+  <div class="col-sm-5 mt-5 justify-content-center">
+    <div class="d-flex align-items-center ">
+      <%= link_to @artwork.user do %>
+        <div class="artist-info-card p-2">
+          <h2><%= @artwork.user.first_name %> <%= @artwork.user.last_name %></h2>
+          <div class="d-flex">
+            <% if @artwork.user.photo.attached? %>
+                <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-smaller" %>
+            <% else %>
+              <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-smaller" %>
+            <% end %>
+            <div class="p-2">
+              <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
+              <p>Location: <%= @artwork.user.location %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="artwork-details">
+      <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
+      <p><%= @artwork.material %></p>
+      <p>Starting price: <b><%= number_to_currency(@artwork.price, unit: "£", precision: 0) %></b></p>
+    </div>
+    <div class="row">
+      <div class="col">
+        <% if @artwork.end_time.future? %>
           <% if @artwork.bids.exists?(user: current_user) %>
-            <h4><small class=>Your bid:</small>
-            <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %></h4>
-            <button type="button" class="btn btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#bidModal">Edit bid</button>
-            <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% if @bid.amount == @artwork.bids.maximum(:amount) %>
+              <p class="text-success">Your bid of <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %> is the highest!</p>
+              <button type="button" class="btn btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#bidModal">Edit bid</button>
+              <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% else %>
+              <p class="text-danger">Your bid of <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %> has been beaten by <%= number_to_currency(@artwork.bids.maximum(:amount) - @bid.amount, unit: "£", precision: 0) %>!</p>
+              <button type="button" class="btn btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#bidModal">Change bid</button>
+              <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% end %>
+          <% elsif @artwork.bids.exists? %>
+            <p class="text-success">Highest current bid: <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
+            <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
           <% else %>
             <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
           <% end %>
-        <% else %>
-          <p style="font-size:24px">Starting price:
-          <%= number_to_currency(@artwork.price, unit: "£", precision: 0) %></p>
-          <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
         <% end %>
-      <% end %>
-    <h4><%= render "shared/countdown", artwork: @artwork %></h4>
+      </div>
+      <div class="col">
+        <p class="text-end text-danger mb-0"><%= render "shared/countdown", artwork: @artwork %></p>
+      </div>
+    </div>
+    <div class="row mt-4" style="height: 200px">
+      <div class="col">
+        <%= link_to collection_path(@collection) do %>
+          <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @collection.photo.key, crop: :fill %>')">
+            <h2>More from the collection</h2>
+            <div class="text-content">
+              <p class="lead"><%= @collection.title %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -7,10 +7,9 @@
     </div>
     <div class="row p-4 justify-content-between">
       <div class="col">
-        <%= link_to artwork_path(@bid.artwork), style: "text-decoration: none" do %>
+        <%= link_to artwork_path(@bid.artwork) do %>
           <%= cl_image_tag @bid.artwork.photo.key, width: 200, crop: :fill, class: "zoomable" %>
           <p><i class="fa-solid fa-arrow-left mt-3"></i> Back to artwork<p>
-          <%= link_to "Your account", user_path(current_user), class: "text-decoration-none" %>
         <% end %>
       </div>
       <div class="col text-end">
@@ -22,6 +21,9 @@
           <button type="button" class="btn btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bidModal">Edit bid</button>
           <%= link_to "Delete bid", bid_path(@bid), class: "btn btn-primary me-0", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
+        <%= link_to user_path(current_user) do %>
+            <p>Your profile <i class="fa-solid fa-arrow-right mt-3"></i><p>
+          <% end %>
       </div>
     </div>
   </div>
