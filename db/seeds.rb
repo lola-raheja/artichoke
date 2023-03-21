@@ -18,7 +18,7 @@ Medium.destroy_all
 puts "Creating users..."
 
 pat = User.new(first_name: "Pat", last_name: "Patterson", email: "pat@email.com", password: "123456", nationality: "British", bio: "I'm Pat and I love hats and art!", date_of_birth: "1980-01-01", location: "London")
-file = URI.open("https://source.unsplash.com/random/?male%20face")
+file = URI.open("app/assets/images/F5013424-798C-499B-8492-21531DB91A8B_1_105_c.jpeg")
 pat.photo.attach(io: file, filename: "profile_photo.png", content_type: "image/png")
 pat.save!
 
