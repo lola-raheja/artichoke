@@ -63,13 +63,13 @@
                 <% if bid.artwork.end_time.past? && bid.amount == bid.artwork.bids.maximum(:amount) %>
                   <p class="text-success">You have won the auction!</p>
                 <% elsif bid.amount == bid.artwork.bids.maximum(:amount) %>
-                  <p class="text-success">Your bid is the highest!</p>
+                  <p class="text-success" style="font-size:18px; font-weight:bold;">Your bid is the highest!</p>
                   <div class="d-flex justify-content-end">
                     <%= link_to "Edit bid", artwork_path(bid.artwork), class: "btn btn btn-outline-primary me-2" %>
                     <%= link_to "Delete bid", bid_path(bid), class: "btn btn-primary me-0", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
                   </div>
                 <% else %>
-                  <p class="text-danger">You have been outbid by <%= number_to_currency(bid.artwork.bids.maximum(:amount) - bid.amount, unit: "£", precision: 0) %>!</p>
+                  <p class="text-success" style="font-size:18px; font-weight:bold;">You have been outbid by <%= number_to_currency(bid.artwork.bids.maximum(:amount) - bid.amount, unit: "£", precision: 0) %>!</p>
                   <div class="d-flex justify-content-end">
                     <%= link_to "Edit bid", artwork_path(bid.artwork), class: "btn btn btn-outline-primary me-2" %>
                     <%= link_to "Delete bid", bid_path(bid), class: "btn btn-primary me-0", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
