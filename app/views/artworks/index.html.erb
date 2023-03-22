@@ -7,7 +7,7 @@
       <div class="filter-parameter-container">
         <div class="filter-type">
           <%= f.label :user_location, "Location", class: "filter-label" %>
-          <%= f.select :user_location, options_for_select(Artwork.joins(:user).pluck(:location).uniq, params[:user_location]), include_blank: true %>
+          <%= f.select :user_location, options_for_select(Artwork.joins(:user).pluck(:location).uniq, params[:user_location]), include_blank: "All" %>
         </div>
         <div class="filter-type">
           <%= f.label :price, class: "filter-label" %>
@@ -18,11 +18,11 @@
             ['£500 - £999', '500,999'],
             ['£1000 - £1,499', '1000,1499'],
             ['Over £1,500', '1500,999999999']
-          ], (params[:price])), include_blank: true %>
+          ], (params[:price])), include_blank: "All" %>
         </div>
         <div class="filter-type">
           <%= f.label :size, class: "filter-label" %>
-          <%= f.select(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: true) %>
+          <%= f.select(:size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: "All") %>
         </div>
         <div class="filter-type">
           <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :medium do |b| %>
