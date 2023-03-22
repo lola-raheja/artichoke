@@ -25,7 +25,7 @@
             <% end %>
             <div>
               <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %></p>
-              <p>Location: <%= @artwork.user.location %></p>
+              <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @artwork.user.location %></p>
             </div>
           </div>
         </div>
