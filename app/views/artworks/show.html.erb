@@ -8,64 +8,60 @@
       <%= link_to :back do %>
         <i class="fa-solid fa-arrow-left fa-2x"></i>
       <% end %>
-      <div class="d-flex align-items-center">
-        <h1 style="font-size:32px"><em><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></em></h1>
-      </div>
     </div>
-    <div class="d-flex align-items-center justify-content-center mx-auto">
-      <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-width: 100%;" %>
+    <div class="d-flex align-items-center justify-content-end mx-auto">
+      <%= cl_image_tag @artwork.photo.key, crop: :fill, style: "max-width: 100%; max-height: 90vh;" %>
     </div>
   </div>
-  <div class="col-sm-5 mt-5 justify-content-center">
-    <div class="d-flex align-items-center ">
-      <%= link_to @artwork.user do %>
-        <div class="artist-info-card p-2">
-          <h2><%= @artwork.user.first_name %> <%= @artwork.user.last_name %></h2>
+  <div class="col-sm-5 justify-content-center">
+    <%= link_to @artwork.user do %>
+      <div class="d-flex align-items-center artist-info-card">
+        <div class="flex-grow-1">
+          <h3><%= @artwork.user.first_name %> <%= @artwork.user.last_name %></h3>
           <div class="d-flex">
             <% if @artwork.user.photo.attached? %>
-                <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-smaller" %>
             <% else %>
               <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-smaller" %>
             <% end %>
-            <div class="p-2">
-              <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %><p>
-              <p>Location: <%= @artwork.user.location %></p>
+            <div>
+              <p><%= @artwork.user.nationality %>, b. <%= @artwork.user.date_of_birth.strftime("%Y") %></p>
+              <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @artwork.user.location %></p>
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
-    <div class="artwork-details">
-      <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
-      <p><%= @artwork.material %></p>
-      <p>Starting price: <b><%= number_to_currency(@artwork.price, unit: "£", precision: 0) %></b></p>
-    </div>
-    <div class="row">
-      <div class="col">
+        <div class="flex-shrink-0">
+          <%= cl_image_tag @artwork.user.photo.key, width: 1000, height: 1000, crop: :thumb, gravity: :face, class: "avatar-medium" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="d-flex align-items-center artist-info-card mt-4">
+      <div class="flex-grow-1 me-1">
+        <h1 style="font-size:24px"><%= @artwork.title %>, <%= @artwork.year.strftime("%Y")%></h1>
+        <p><%= @artwork.height %> x <%= @artwork.width %> cm</p>
+        <p><%= @artwork.material %></p>
+        <p>Starting price: <b><%= number_to_currency(@artwork.price, unit: "£", precision: 0) %></b></p>
+      </div>
+      <div class="text-end flex-shrink-0">
         <% if @artwork.end_time.future? %>
           <% if @artwork.bids.exists?(user: current_user) %>
             <% if @bid.amount == @artwork.bids.maximum(:amount) %>
               <p class="text-success">Your bid of <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %> is the highest!</p>
-              <button type="button" class="btn btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#bidModal">Edit bid</button>
-              <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             <% else %>
               <p class="text-danger">Your bid of <%= number_to_currency(@bid.amount, unit: "£", precision: 0) %> has been beaten by <%= number_to_currency(@artwork.bids.maximum(:amount) - @bid.amount, unit: "£", precision: 0) %>!</p>
-              <button type="button" class="btn btn btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#bidModal">Change bid</button>
-              <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
             <% end %>
+            <button type="button" class="btn btn btn-outline-primary me-1 my-2" data-bs-toggle="modal" data-bs-target="#bidModal">Change bid</button>
+            <%= link_to "Delete Bid", bid_path(@bid), class: "btn btn-primary my-2", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           <% elsif @artwork.bids.exists? %>
             <p class="text-success">Highest current bid: <%= number_to_currency(@artwork.bids.maximum(:amount), unit: "£", precision: 0) %></p>
-            <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
+            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
           <% else %>
-            <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
+            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#bidModal">Place a bid</button>
           <% end %>
         <% end %>
-      </div>
-      <div class="col">
         <p class="text-end text-danger mb-0"><%= render "shared/countdown", artwork: @artwork %></p>
       </div>
     </div>
-    <div class="row mt-4" style="height: 200px">
+    <div class="row mt-4" style="height: 178px">
       <div class="col">
         <%= link_to collection_path(@collection) do %>
           <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @collection.photo.key, crop: :fill %>')">
