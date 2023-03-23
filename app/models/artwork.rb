@@ -5,6 +5,7 @@ class Artwork < ApplicationRecord
   has_many :collections, through: :artwork_collections
   has_many :bids, dependent: :destroy
   has_one_attached :photo
+  acts_as_favoritable
 
   include PgSearch::Model
   pg_search_scope :global_search,

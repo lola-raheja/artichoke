@@ -5,7 +5,7 @@
 <div class="user-profile-card">
   <div class="flexbox">
     <div>
-      <div class="user-profile-photo">
+      <div class="user-profile-border">
         <% if @user.photo.attached? %>
           <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
         <% else %>
@@ -49,11 +49,11 @@
 <% end %>
 
 <% if @user == current_user %>
-  <div class="row justify-content-evenly">
+  <div class="row justify-content-evenly user-profile-border">
     <% if @bids.any? %>
       <h2>My bids</h2>
       <% @bids.each do |bid| %>
-        <div class="col-5 p-3">
+        <div class="col-md-5 p-3">
           <div class="card bid-card">
             <div class="row p-3 justify-content-between">
               <div class="col">
@@ -82,6 +82,23 @@
                   </div>
                 <% end %>
               </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row justify-content-evenly user-profile-border" id="wishlist">
+    <% if @favorite_artworks.any? %>
+      <h2>My wishlist</h2>
+      <% @favorite_artworks.each do |artwork| %>
+        <div class="col-sm-3 p-3">
+          <div class="card bid-card">
+            <%= link_to artwork_path(artwork) do %>
+              <%= cl_image_tag artwork.photo.key, height: 200, crop: :fill, class: "zoomable card-img-top" %>
+            <% end %>
+            <div class="card-body">
+              <p class="text-danger"><%= render "shared/countdown", artwork: artwork %></small></p>
             </div>
           </div>
         </div>

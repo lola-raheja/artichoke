@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :bids, only: %i[show destroy edit update]
   resources :artworks, only: %i[index show] do
     resources :bids, only: %i[create update]
+    post :toggle_favorite, on: :member
   end
   resources :users, only: :show do
     resources :bids, only: :index

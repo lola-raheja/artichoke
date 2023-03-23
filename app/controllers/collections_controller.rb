@@ -37,4 +37,9 @@ class CollectionsController < ApplicationController
     end
     assign_to_column(artworks)
   end
+
+  def toggle_favorite
+    @artwork = Artwork.find(params[:id])
+    current_user.favorited?(@artwork) ? current_user.unfavorite(@artwork) : current_user.favorite(@artwork)
+  end
 end

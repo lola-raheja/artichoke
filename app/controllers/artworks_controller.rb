@@ -1,5 +1,6 @@
 class ArtworksController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :authenticate_user!, only: :toggle_favorite
 
   def assign_to_column(artworks)
     artworks_array = artworks.in_groups(3)
@@ -42,5 +43,10 @@ class ArtworksController < ApplicationController
     @bid = @artwork.bids.find_by(user: current_user) || Bid.new
     @collections = @artwork.collections
     @collection = @collections.present? ? @collections.sample : nil
+  end
+
+  def toggle_favorite
+    @artwork = Artwork.find(params[:id])
+    current_user.favorited?(@artwork) ? current_user.unfavorite(@artwork) : current_user.favorite(@artwork)
   end
 end
