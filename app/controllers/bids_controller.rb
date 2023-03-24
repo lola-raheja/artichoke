@@ -24,7 +24,7 @@ class BidsController < ApplicationController
   def destroy
     @bid = Bid.find(params[:id])
     @bid.destroy
-    redirect_back fallback_location: root_path, notice: "Bid deleted."
+    redirect_to current_user, notice: "Bid was deleted."
   end
 
   def edit
