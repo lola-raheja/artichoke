@@ -1,9 +1,14 @@
-<nav class="navbar bg-body-tertiary fixed-top navbar-artichoke">
+<nav class="navbar bg-body-tertiary sticky-md-top navbar-artichoke">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand d-none d-md-block" do %>
       <%= image_tag "logo.svg", alt: "Artichoke logo" %>
     <% end %>
-    <div class="search-container">
+    <% unless user_signed_in? %>
+      <%= link_to root_path, class: "d-md-none" do %>
+        <%= image_tag "icon.svg", alt: "Artichoke icon", class: "navbar-icon" %>
+      <% end %>
+    <% end %>
+    <div class="search-container d-none d-lg-block">
       <%= form_with url: artworks_path, method: :get, class: "search-bar" do |f| %>
         <div class="search-input-container d-flex flex-row align-items-center">
           <button type="submit" class="search-button"><i class="fas fa-search"></i></button>

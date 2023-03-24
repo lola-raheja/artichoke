@@ -54,9 +54,9 @@
       <h2>My bids</h2>
       <% @bids.each do |bid| %>
         <div class="col-md-5 p-3">
-          <div class="card bid-card">
+          <div class="card">
             <div class="row p-3 justify-content-between">
-              <div class="col">
+              <div class="col bid-card">
                 <%= link_to artwork_path(bid.artwork) do %>
                   <%= cl_image_tag bid.artwork.photo.key, width: 200, crop: :fill, class: "zoomable" %>
                 <% end %>
