@@ -1,9 +1,9 @@
 .zoomable {
-  transition: transform .2s;
+  transition: transform .5s ease;
 }
 
 .zoomable:hover {
-  transform: scale(1.01);
+  transform: scale(1.05);
 }
 
 .artwork-card-info {
@@ -28,6 +28,7 @@
   width: 320px;
   padding: 4px;
   position: relative;
+  overflow: hidden;
 }
 
 .artwork-favorite {
