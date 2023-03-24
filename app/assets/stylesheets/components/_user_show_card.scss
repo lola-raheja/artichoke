@@ -3,7 +3,7 @@
   justify-content: space-around;
 }
 
-.user-profile-card {
+.user-profile-border {
   border-bottom: 1px solid $artichoke-purple;
   margin-bottom: 24px;
   padding-bottom: 24px;
@@ -35,11 +35,7 @@
   text-align: justify;
 }
 
-.bid-card {
-  height: 280px;
-}
-
 .bid-card img {
-  max-height: 66%;
-  object-fit: contain;
+  max-height: 95%;
+  object-fit: cover;
 }
