@@ -52,7 +52,7 @@ file = URI.open("https://source.unsplash.com/random/?female%20face")
 artemis_shaw.photo.attach(io: file, filename: "artemis_shaw.png", content_type: "image/png")
 artemis_shaw.save!
 
-dima_srouji = User.new(first_name: "Dima", last_name: "Srouji", email: "dimasrouji@email.com", password: "123456", nationality: "Greek American", bio: "I'm a filmmaker.", date_of_birth: "1989-03-24", location: "New York")
+dima_srouji = User.new(first_name: "Dima", last_name: "Srouji", email: "dimasrouji@email.com", password: "123456", nationality: "Palestinian American", bio: "I'm a glass artist.", date_of_birth: "1989-03-24", location: "London")
 file = URI.open("https://source.unsplash.com/random/?female%20face")
 dima_srouji.photo.attach(io: file, filename: "dima_srouji.png", content_type: "image/png")
 dima_srouji.save!
@@ -127,12 +127,6 @@ fourth_collection.save!
 
 puts "Creating media..."
 
-# media = ["Painting", "Photography", "Multi-media", "Sculpture", "Drawing", "Print"]
-
-# media.each do |medium|
-#   Medium.create!(medium: medium.to_s)
-# end
-
 painting = Medium.create!(medium: "Painting")
 photography = Medium.create!(medium: "Photography")
 multimedia = Medium.create!(medium: "Multi-media")
@@ -142,7 +136,7 @@ prints = Medium.create!(medium: "Print")
 puts "Creating real art..."
 
 funk = Artwork.new(title: "Funk (Hardest Working Man)", price: 5000, user: david_boatwright, medium: painting,
-height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9932845_orig.jpg")
 funk.photo.attach(io: file, filename: "funk.jpg", content_type: "image/jpg")
 funk.save!
@@ -150,7 +144,7 @@ ArtworkCollection.create!(artwork: funk, collection: third_collection)
 third_collection.save!
 
 eleven_dollars = Artwork.new(title: "Eleven Dollars", price: 5000, user: david_boatwright, medium: painting,
-  height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+  height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/2947265_orig.jpg")
 eleven_dollars.photo.attach(io: file, filename: "eleven_dollars.jpg", content_type: "image/jpg")
 eleven_dollars.save!
@@ -158,7 +152,7 @@ ArtworkCollection.create!(artwork: eleven_dollars, collection: third_collection)
 third_collection.save!
 
 six_dollars = Artwork.new(title: "Six Dollars", price: 1000, user: david_boatwright, medium: painting,
-  height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+  height: 150, width: 300, year: "2020-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9086013_orig.jpg")
 six_dollars.photo.attach(io: file, filename: "six_dollars.jpg", content_type: "image/jpg")
 six_dollars.save!
@@ -166,7 +160,7 @@ ArtworkCollection.create!(artwork: six_dollars, collection: third_collection)
 third_collection.save!
 
 i_aint_know = Artwork.new(title: "I Ain't Know", price: 500, user: david_boatwright, medium: painting,
-  height: 75, width: 100, year: "2020-01-01", material: "Limited edition giclee print", end_time: "2023-05-26 18:02:25")
+  height: 75, width: 100, year: "2020-01-01", material: "Limited edition giclee print", end_time: "2023-03-27 23:59:59")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6223450_orig.jpg")
 i_aint_know.photo.attach(io: file, filename: "i_aint_know.jpg", content_type: "image/jpg")
 i_aint_know.save!
@@ -174,17 +168,169 @@ ArtworkCollection.create!(artwork: i_aint_know, collection: third_collection)
 third_collection.save!
 
 no_dice = Artwork.new(title: "No Dice", price: 4500, user: david_boatwright, medium: painting,
-  height: 150, width: 200, year: "2017-01-01", material: "Oil on canvas", end_time: "2023-05-26 18:02:25")
+  height: 150, width: 200, year: "2017-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
 file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/img-0348_orig.jpeg")
 no_dice.photo.attach(io: file, filename: "no_dice.jpg", content_type: "image/jpg")
 no_dice.save!
 ArtworkCollection.create!(artwork: no_dice, collection: third_collection)
 third_collection.save!
 
+i_got_soul = Artwork.new(title: "I Got Soul", price: 5500, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2016-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/i-got-soul_orig.jpg")
+i_got_soul.photo.attach(io: file, filename: "i_got_soul.jpg", content_type: "image/jpg")
+i_got_soul.save!
+ArtworkCollection.create!(artwork: i_got_soul, collection: third_collection)
+third_collection.save!
+
+x_ray_spex = Artwork.new(title: "X-Ray Spex", price: 5250, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2016-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/7415878_orig.jpg")
+x_ray_spex.photo.attach(io: file, filename: "x_ray_spex.jpg", content_type: "image/jpg")
+x_ray_spex.save!
+ArtworkCollection.create!(artwork: x_ray_spex, collection: third_collection)
+third_collection.save!
+
+tiny_tango = Artwork.new(title: "Tiny Tango", price: 7500, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2016-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6811936_orig.jpg")
+tiny_tango.photo.attach(io: file, filename: "tiny_tango.jpg", content_type: "image/jpg")
+tiny_tango.save!
+ArtworkCollection.create!(artwork: tiny_tango, collection: third_collection)
+third_collection.save!
+
+poppy = Artwork.new(title: "RIP Poppy", price: 7500, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2016-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/3356086_orig.jpg")
+poppy.photo.attach(io: file, filename: "poppy.jpg", content_type: "image/jpg")
+poppy.save!
+ArtworkCollection.create!(artwork: poppy, collection: third_collection)
+third_collection.save!
+
+johnson = Artwork.new(title: "Robert Johnson", price: 7000, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/4763901_orig.jpg")
+johnson.photo.attach(io: file, filename: "johnson.jpg", content_type: "image/jpg")
+johnson.save!
+ArtworkCollection.create!(artwork: johnson, collection: third_collection)
+third_collection.save!
+
+miss_folly_beach = Artwork.new(title: "Miss Folly Beach", price: 7000, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/105097_orig.jpg")
+miss_folly_beach.photo.attach(io: file, filename: "miss_folly_beach.jpg", content_type: "image/jpg")
+miss_folly_beach.save!
+ArtworkCollection.create!(artwork: miss_folly_beach, collection: third_collection)
+third_collection.save!
+
+half_james_half_elvis = Artwork.new(title: "Half James Half Elvis", price: 4500, user: david_boatwright, medium: painting,
+  height: 250, width: 140, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/5508370_orig.jpg")
+half_james_half_elvis.photo.attach(io: file, filename: "half_james_half_elvis.jpg", content_type: "image/jpg")
+half_james_half_elvis.save!
+ArtworkCollection.create!(artwork: half_james_half_elvis, collection: third_collection)
+third_collection.save!
+
+strange_girlfriends = Artwork.new(title: "Strange Girlfriends", price: 450, user: david_boatwright, medium: painting,
+  height: 140, width: 300, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/8387290_orig.jpg")
+strange_girlfriends.photo.attach(io: file, filename: "strange_girlfriends.jpg", content_type: "image/jpg")
+strange_girlfriends.save!
+ArtworkCollection.create!(artwork: strange_girlfriends, collection: third_collection)
+third_collection.save!
+
+twisted_guy = Artwork.new(title: "Twisted Guy", price: 4000, user: david_boatwright, medium: painting,
+  height: 170, width: 120, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/7648471_orig.jpg")
+twisted_guy.photo.attach(io: file, filename: "twisted_guy.jpg", content_type: "image/jpg")
+twisted_guy.save!
+ArtworkCollection.create!(artwork: twisted_guy, collection: third_collection)
+third_collection.save!
+
+cairo_den = Artwork.new(title: "Cairo", price: 4000, user: david_boatwright, medium: painting,
+  height: 140, width: 270, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/6306290_orig.jpg")
+cairo_den.photo.attach(io: file, filename: "cairo_den.jpg", content_type: "image/jpg")
+cairo_den.save!
+ArtworkCollection.create!(artwork: cairo_den, collection: third_collection)
+third_collection.save!
+
+ma_naugha_ma_hyde = Artwork.new(title: "Ma Naugha Ma Hyde", price: 450, user: david_boatwright, medium: painting,
+  height: 170, width: 140, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/2721838_orig.jpg")
+ma_naugha_ma_hyde.photo.attach(io: file, filename: "ma_naugha_ma_hyde.jpg", content_type: "image/jpg")
+ma_naugha_ma_hyde.save!
+ArtworkCollection.create!(artwork: ma_naugha_ma_hyde, collection: third_collection)
+third_collection.save!
+
+cuban_gator_gal = Artwork.new(title: "Cuban Gator Gal", price: 450, user: david_boatwright, medium: painting,
+  height: 140, width: 170, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/3180478_orig.jpg")
+cuban_gator_gal.photo.attach(io: file, filename: "cuban_gator_gal.jpg", content_type: "image/jpg")
+cuban_gator_gal.save!
+ArtworkCollection.create!(artwork: cuban_gator_gal, collection: third_collection)
+third_collection.save!
+
+blind_fold = Artwork.new(title: "Blindfolded", price: 450, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/8687728_orig.jpg")
+blind_fold.photo.attach(io: file, filename: "blind_fold.jpg", content_type: "image/jpg")
+blind_fold.save!
+ArtworkCollection.create!(artwork: blind_fold, collection: third_collection)
+third_collection.save!
+
+in_romance_we_lust = Artwork.new(title: "In Romance We Lust", price: 450, user: david_boatwright, medium: painting,
+  height: 150, width: 210, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/8111634_orig.jpg")
+in_romance_we_lust.photo.attach(io: file, filename: "in_romance_we_lust.jpg", content_type: "image/jpg")
+in_romance_we_lust.save!
+ArtworkCollection.create!(artwork: in_romance_we_lust, collection: third_collection)
+third_collection.save!
+
+golf_swing = Artwork.new(title: "Gold Swing", price: 5000, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/8677441_orig.jpg")
+golf_swing.photo.attach(io: file, filename: "golf_swing.jpg", content_type: "image/jpg")
+golf_swing.save!
+ArtworkCollection.create!(artwork: golf_swing, collection: third_collection)
+third_collection.save!
+
+uneeda_biscuit = Artwork.new(title: "Uneeda Biscuit", price: 5000, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/1708473_orig.jpg")
+uneeda_biscuit.photo.attach(io: file, filename: "uneeda_biscuit.jpg", content_type: "image/jpg")
+uneeda_biscuit.save!
+ArtworkCollection.create!(artwork: uneeda_biscuit, collection: third_collection)
+third_collection.save!
+
+shark_tastic = Artwork.new(title: "Shark Attack", price: 450, user: david_boatwright, medium: painting,
+  height: 150, width: 150, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/img-0741_orig.jpeg")
+shark_tastic.photo.attach(io: file, filename: "shark_tastic.jpg", content_type: "image/jpg")
+shark_tastic.save!
+ArtworkCollection.create!(artwork: shark_tastic, collection: third_collection)
+third_collection.save!
+
+big_mama = Artwork.new(title: "Big Mama", price: 450, user: david_boatwright, medium: painting,
+  height: 200, width: 150, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/9113725_orig.jpg")
+big_mama.photo.attach(io: file, filename: "big_mama.jpg", content_type: "image/jpg")
+big_mama.save!
+ArtworkCollection.create!(artwork: big_mama, collection: third_collection)
+third_collection.save!
+
+good_luck = Artwork.new(title: "Good Luck", price: 2700, user: david_boatwright, medium: painting,
+  height: 200, width: 130, year: "2019-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59")
+file = URI.open("http://www.luckyboyart.com/uploads/6/4/9/5/64954289/8336411_orig.jpg")
+good_luck.photo.attach(io: file, filename: "good_luck.jpg", content_type: "image/jpg")
+good_luck.save!
+ArtworkCollection.create!(artwork: good_luck, collection: third_collection)
+third_collection.save!
+
 puts "Finished David's artwork!"
 
 jesus = Artwork.new(title: "Jesus", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23409048512_2962ce4fa4_b.jpg")
 jesus.photo.attach(io: file, filename: "jesus.jpg", content_type: "image/jpg")
 jesus.save!
@@ -192,7 +338,7 @@ ArtworkCollection.create!(artwork: jesus, collection: third_collection)
 third_collection.save!
 
 mark_twain = Artwork.new(title: "Mark Twain", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517553855_404d8d1ecd_o.jpg")
 mark_twain.photo.attach(io: file, filename: "mark_twain.jpg", content_type: "image/jpg")
 mark_twain.save!
@@ -200,7 +346,7 @@ ArtworkCollection.create!(artwork: mark_twain, collection: third_collection)
 third_collection.save!
 
 amelia_earhart = Artwork.new(title: "Amelia Earhart", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24022323322_78021decae_o.jpg")
 amelia_earhart.photo.attach(io: file, filename: "amelia_earhart.jpg", content_type: "image/jpg")
 amelia_earhart.save!
@@ -208,7 +354,7 @@ ArtworkCollection.create!(artwork: amelia_earhart, collection: third_collection)
 third_collection.save!
 
 frida_kahlo = Artwork.new(title: "Frida Kahlo", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517551885_9466035078_b.jpg")
 frida_kahlo.photo.attach(io: file, filename: "frida_kahlo.jpg", content_type: "image/jpg")
 frida_kahlo.save!
@@ -216,11 +362,115 @@ ArtworkCollection.create!(artwork: frida_kahlo, collection: third_collection)
 third_collection.save!
 
 queen_elizabeth = Artwork.new(title: "Queen Elizabeth", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-05-26 18:02:25")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24064125266_aa13a14a46_o.jpg")
 queen_elizabeth.photo.attach(io: file, filename: "queen_elizabeth.jpg", content_type: "image/jpg")
 queen_elizabeth.save!
 ArtworkCollection.create!(artwork: queen_elizabeth, collection: third_collection)
+third_collection.save!
+
+john_wayne = Artwork.new(title: "John Wayne", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/30654744101_caf0081a42_b.jpg")
+john_wayne.photo.attach(io: file, filename: "john_wayne.jpg", content_type: "image/jpg")
+john_wayne.save!
+ArtworkCollection.create!(artwork: john_wayne, collection: third_collection)
+third_collection.save!
+
+willie_nelson = Artwork.new(title: "Willie Nelson", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24104287706_c98434d43c_o.jpg")
+willie_nelson.photo.attach(io: file, filename: "willie_nelson.jpg", content_type: "image/jpg")
+willie_nelson.save!
+ArtworkCollection.create!(artwork: willie_nelson, collection: third_collection)
+third_collection.save!
+
+lucille_ball = Artwork.new(title: "Lucille Ball", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23170900429_d3c8d76880_o.jpg")
+lucille_ball.photo.attach(io: file, filename: "lucille_ball.jpg", content_type: "image/jpg")
+lucille_ball.save!
+ArtworkCollection.create!(artwork: lucille_ball, collection: third_collection)
+third_collection.save!
+
+maya_angalou = Artwork.new(title: "Maya Angelou", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23409051832_d85b322e08_o.jpg")
+maya_angalou.photo.attach(io: file, filename: "maya_angalou.jpg", content_type: "image/jpg")
+maya_angalou.save!
+ArtworkCollection.create!(artwork: maya_angalou, collection: third_collection)
+third_collection.save!
+
+etta_james = Artwork.new(title: "Etta James", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24031912749_3fc6271e26_b.jpg")
+etta_james.photo.attach(io: file, filename: "etta_james.jpg", content_type: "image/jpg")
+etta_james.save!
+ArtworkCollection.create!(artwork: etta_james, collection: third_collection)
+third_collection.save!
+
+andy_warhol = Artwork.new(title: "Andy Warhol", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/30654772691_63651f1edb_b.jpg")
+andy_warhol.photo.attach(io: file, filename: "andy_warhol.jpg", content_type: "image/jpg")
+andy_warhol.save!
+ArtworkCollection.create!(artwork: andy_warhol, collection: third_collection)
+third_collection.save!
+
+sammy_davis_jr = Artwork.new(title: "Sammy Davis Jr", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24536231466_213ee5e03b_b.jpg")
+sammy_davis_jr.photo.attach(io: file, filename: "sammy_davis_jr.jpg", content_type: "image/jpg")
+sammy_davis_jr.save!
+ArtworkCollection.create!(artwork: sammy_davis_jr, collection: third_collection)
+third_collection.save!
+
+peace_love_buddha = Artwork.new(title: "Buddha", price: 4500, user: molly_b_right, medium: multimedia,
+  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/22890414673_6d5c32cfec_o.jpg")
+peace_love_buddha.photo.attach(io: file, filename: "peace_love_buddha.jpg", content_type: "image/jpg")
+peace_love_buddha.save!
+ArtworkCollection.create!(artwork: peace_love_buddha, collection: third_collection)
+third_collection.save!
+
+albert_einstein = Artwork.new(title: "Albert Einstein", price: 5500, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517546625_936886a7cd_b.jpg")
+albert_einstein.photo.attach(io: file, filename: "albert_einstein.jpg", content_type: "image/jpg")
+albert_einstein.save!
+ArtworkCollection.create!(artwork: albert_einstein, collection: third_collection)
+third_collection.save!
+
+salvator_dali = Artwork.new(title: "Salvator Dali", price: 6000, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/22889248194_46ea1fc338_b.jpg")
+salvator_dali.photo.attach(io: file, filename: "salvator_dali.jpg", content_type: "image/jpg")
+salvator_dali.save!
+ArtworkCollection.create!(artwork: salvator_dali, collection: third_collection)
+third_collection.save!
+
+magestic_baboon = Artwork.new(title: "Baboon", price: 6000, user: molly_b_right, medium: multimedia,
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23512438916_afdb544200_o.jpg")
+magestic_baboon.photo.attach(io: file, filename: "magestic_baboon.jpg", content_type: "image/jpg")
+magestic_baboon.save!
+ArtworkCollection.create!(artwork: magestic_baboon, collection: third_collection)
+third_collection.save!
+
+sitting_bull = Artwork.new(title: "Sitting Bull", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 250, width: 160, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/30654637741_072041490b_b.jpg")
+sitting_bull.photo.attach(io: file, filename: "sitting_bull.jpg", content_type: "image/jpg")
+sitting_bull.save!
+ArtworkCollection.create!(artwork: sitting_bull, collection: third_collection)
+third_collection.save!
+
+audrey_hepburn = Artwork.new(title: "Sitting Bull", price: 7500, user: molly_b_right, medium: multimedia,
+  height: 200, width: 130, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23491436716_a47b48a9ef_b.jpg")
+audrey_hepburn.photo.attach(io: file, filename: "audrey_hepburn.jpg", content_type: "image/jpg")
+audrey_hepburn.save!
+ArtworkCollection.create!(artwork: audrey_hepburn, collection: third_collection)
 third_collection.save!
 
 puts "Finished Molly's artwork!"
@@ -229,7 +479,7 @@ puts "Creating fake art for New & Noteworthy..."
 balcoon = { title: "Balcoon", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
 nem_kaldi = { title: "Nem Kaldi", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
-  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+  material: "Oil, tempera, pastel on wood", end_time: "2023-03-27 23:59:59" }
 wechat = { title: "WeChat", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
   year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
 the_boss = { title: "The Boss", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
@@ -239,7 +489,7 @@ lau_ma_al_mahaba = { title: "Lau Ma al-Mahaba", price: 90, user: dima_srouji, me
 temps_de_pluja = { title: "Temps de Pluja", price: 450, user: dixie_dunbar, medium: prints, height: 91, width: 73, year: "2015-01-01",
   material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
 akhaduhu_mini_urah = { title: "Akhaduhu Mini Urah", price: 150, user: alex_atack, medium: sculpture, height: 74, width: 62,
-  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+  year: "2020-01-01", material: "Oil on wood", end_time: "2023-03-27 23:59:59" }
 nellacqua = { title: "Nell'acqua della chiara fontana", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
 [balcoon, nem_kaldi, wechat, the_boss, lau_ma_al_mahaba, temps_de_pluja, akhaduhu_mini_urah, nellacqua].each do |attributes|
@@ -255,7 +505,7 @@ puts "Creating fake art for Vibrant Vibes..."
 ikimiz = { title: "Ikimiz bir Fidaniz", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
 nonstop = { title: "Nonstop", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
-  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+  material: "Oil, tempera, pastel on wood", end_time: "2023-03-27 23:59:59" }
 oi_sermuksnio = { title: "Oi Sermuksnio", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
   year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
 a_paris = { title: "A Paris", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
@@ -263,9 +513,9 @@ a_paris = { title: "A Paris", price: 510, user: artemis_shaw, medium: painting, 
 paloma_negra = { title: "Paloma Negra", price: 90, user: dima_srouji, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
 wind_of_change = { title: "Wind of Change", price: 450, user: dixie_dunbar, medium: prints, height: 91, width: 73, year: "2015-01-01",
-  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+  material: "Oil, tempera, pastel on wood", end_time: "2023-03-27 23:59:59" }
 chal_akela = { title: "Chal Akela", price: 150, user: alex_atack, medium: sculpture, height: 74, width: 62,
-  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+  year: "2020-01-01", material: "Oil on wood", end_time: "2023-03-27 23:59:59" }
 mafatshi_leh = { title: "Mafatshi Leh", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
 [ikimiz, nonstop, oi_sermuksnio, a_paris, paloma_negra, wind_of_change, chal_akela, mafatshi_leh].each do |attributes|
@@ -281,22 +531,48 @@ puts "Creating fake art for Decorative Yet Evocative..."
 zum_zum = { title: "Zum-Zum", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
 pochelovat = { title: "Pochelovat", price: 450, user: ali_karimi, medium: prints, height: 91, width: 73, year: "2015-01-01",
-  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+  material: "Oil, tempera, pastel on wood", end_time: "2023-03-27 23:59:59" }
 howzat = { title: "Howzat", price: 150, user: asim_rafiqui, medium: sculpture, height: 74, width: 62,
-  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+  year: "2020-01-01", material: "Oil on wood", end_time: "2023-03-27 23:59:59" }
 sugar_man = { title: "Sugar Man", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
 what_a_life = { title: "What A Life", price: 90, user: dima_srouji, medium: photography, height: 77, width: 53, year: "2018-01-01",
   material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
 mano = { title: "MANO", price: 450, user: dixie_dunbar, medium: prints, height: 91, width: 73, year: "2015-01-01",
-  material: "Oil, tempera, pastel and crayon on cardboard", end_time: "2023-03-27 23:59:59" }
+  material: "Oil, tempera, pastel on wood", end_time: "2023-03-27 23:59:59" }
 tgoul_maaraft = { title: "Tgoul Maaraft", price: 150, user: alex_atack, medium: sculpture, height: 74, width: 62,
-  year: "2020-01-01", material: "Oil on beaverboard", end_time: "2023-03-27 23:59:59" }
+  year: "2020-01-01", material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
 carolans = { title: "Carolan's Air", price: 510, user: artemis_shaw, medium: painting, height: 84, width: 152, year: "2016-01-01",
   material: "Oil on canvas", end_time: "2023-03-27 23:59:59" }
 [zum_zum, pochelovat, howzat, sugar_man, what_a_life, mano, tgoul_maaraft, carolans].each do |attributes|
   artwork = Artwork.new(attributes)
   file = URI.open("https://source.unsplash.com/random/?art #{attributes[:title]}")
+  artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
+  artwork.save!
+  puts "Created #{artwork.title}"
+  ArtworkCollection.create!(artwork: artwork, collection: fourth_collection)
+end
+
+puts "Creating fake photography generally..."
+calypso_queen = { title: "Calypso Queen", price: 90, user: alex_atack, medium: photography, height: 77, width: 53, year: "2018-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+kitoko = { title: "kitoko", price: 450, user: ali_karimi, medium: photography, height: 91, width: 73, year: "2015-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+daftari_hili = { title: "Daftari Hili", price: 150, user: asim_rafiqui, medium: photography, height: 74, width: 62,
+  year: "2020-01-01", material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+falafel = { title: "Falafel", price: 490, user: artemis_shaw, medium: photography, height: 84, width: 152, year: "2016-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+love_you_madly = { title: "Love You Madly", price: 90, user: dima_srouji, medium: photography, height: 77, width: 53, year: "2018-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+never_there = { title: "Never There", price: 450, user: dixie_dunbar, medium: photography, height: 91, width: 73, year: "2015-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+roi_lion = { title: "Roi Lion", price: 150, user: alex_atack, medium: photography, height: 74, width: 62,
+  year: "2020-01-01", material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+psychedelic_woman = { title: "Psychedelic Woman", price: 490, user: artemis_shaw, medium: photography, height: 84, width: 152, year: "2016-01-01",
+  material: "Giclee print on Hahnemuhle", end_time: "2023-03-27 23:59:59" }
+[calypso_queen, kitoko, daftari_hili, falafel, love_you_madly, never_there, roi_lion, psychedelic_woman].each do |attributes|
+  artwork = Artwork.new(attributes)
+  file = URI.open("https://source.unsplash.com/random/?fine%20art%20photography #{attributes[:title]}")
   artwork.photo.attach(io: file, filename: "#{attributes[:title]}.png", content_type: "image/png")
   artwork.save!
   puts "Created #{artwork.title}"
