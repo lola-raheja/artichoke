@@ -52,7 +52,7 @@ file = URI.open("https://source.unsplash.com/random/?female%20face")
 artemis_shaw.photo.attach(io: file, filename: "artemis_shaw.png", content_type: "image/png")
 artemis_shaw.save!
 
-dima_srouji = User.new(first_name: "Dima", last_name: "Srouji", email: "dimasrouji@email.com", password: "123456", nationality: "Greek American", bio: "I'm a filmmaker.", date_of_birth: "1989-03-24", location: "New York")
+dima_srouji = User.new(first_name: "Dima", last_name: "Srouji", email: "dimasrouji@email.com", password: "123456", nationality: "Palestinian American", bio: "I'm a glass artist.", date_of_birth: "1989-03-24", location: "London")
 file = URI.open("https://source.unsplash.com/random/?female%20face")
 dima_srouji.photo.attach(io: file, filename: "dima_srouji.png", content_type: "image/png")
 dima_srouji.save!
