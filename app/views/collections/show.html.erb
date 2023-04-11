@@ -30,11 +30,8 @@
           <%= f.select :size, options_for_select(['small', 'medium', 'large'], params[:size]), include_blank: "All" %>
         </div>
         <div class="filter-type">
-          <%= f.collection_check_boxes :medium_ids, Medium.all, :id, :medium do |b| %>
-            <%= b.label do %>
-              <%= b.check_box + b.text %>
-            <% end %>
-          <% end %>
+          <%= f.label :medium_ids, "Medium", class: "filter-label" %>
+          <%= f.select :medium_ids, Medium.all.collect { |m| [m.medium, m.id] }, {}, { multiple: true, size: 1 } %>
         </div>
         <div class="filter-type">
           <%= f.submit "Filter", class: "btn btn-primary" %>
