@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card w-50 my-3 mx-auto">
+  <div class="card my-3 mx-auto" style="max-width: 48rem;">
     <div class="card-header">
       <p>Hey <%= @bid.user.first_name %>,</p>
       <h3><i class="fa-solid fa-check"></i> Your bid is confirmed!</h3>
@@ -27,8 +27,8 @@
       </div>
     </div>
   </div>
-  <div class="row p-4" style="height: 400px;">
-    <div class="col-4">
+  <div class="row p-4 gy-1" style="height: 400px;">
+    <div class="col-sm-4">
       <%= link_to collection_path(@collection) do %>
         <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @collection.photo.key, crop: :fill %>')">
           <h2>Explore the collection</h2>
@@ -38,7 +38,7 @@
         </div>
       <% end %>
     </div>
-    <div class="col-4">
+    <div class="col-sm-4">
       <%= link_to @bid.artwork.user do %>
         <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @bid.artwork.user.photo.key, crop: :fill %>')">
           <h2>About the artist</h2>
@@ -48,7 +48,7 @@
         </div>
       <% end %>
     </div>
-    <div class="col-4">
+    <div class="col-sm-4">
       <%= link_to artwork_path(@artwork) do %>
         <div class="collection-card-small" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path @artwork.photo.key, crop: :fill %>')">
           <h2>More by the artist</h2>
