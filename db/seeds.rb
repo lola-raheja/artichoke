@@ -330,7 +330,7 @@ third_collection.save!
 puts "Finished David's artwork!"
 
 jesus = Artwork.new(title: "Jesus", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23409048512_2962ce4fa4_b.jpg")
 jesus.photo.attach(io: file, filename: "jesus.jpg", content_type: "image/jpg")
 jesus.save!
@@ -338,7 +338,7 @@ ArtworkCollection.create!(artwork: jesus, collection: third_collection)
 third_collection.save!
 
 mark_twain = Artwork.new(title: "Mark Twain", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517553855_404d8d1ecd_o.jpg")
 mark_twain.photo.attach(io: file, filename: "mark_twain.jpg", content_type: "image/jpg")
 mark_twain.save!
@@ -346,7 +346,7 @@ ArtworkCollection.create!(artwork: mark_twain, collection: third_collection)
 third_collection.save!
 
 amelia_earhart = Artwork.new(title: "Amelia Earhart", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24022323322_78021decae_o.jpg")
 amelia_earhart.photo.attach(io: file, filename: "amelia_earhart.jpg", content_type: "image/jpg")
 amelia_earhart.save!
@@ -354,7 +354,7 @@ ArtworkCollection.create!(artwork: amelia_earhart, collection: third_collection)
 third_collection.save!
 
 frida_kahlo = Artwork.new(title: "Frida Kahlo", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517551885_9466035078_b.jpg")
 frida_kahlo.photo.attach(io: file, filename: "frida_kahlo.jpg", content_type: "image/jpg")
 frida_kahlo.save!
@@ -362,7 +362,7 @@ ArtworkCollection.create!(artwork: frida_kahlo, collection: third_collection)
 third_collection.save!
 
 queen_elizabeth = Artwork.new(title: "Queen Elizabeth", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24064125266_aa13a14a46_o.jpg")
 queen_elizabeth.photo.attach(io: file, filename: "queen_elizabeth.jpg", content_type: "image/jpg")
 queen_elizabeth.save!
@@ -370,7 +370,7 @@ ArtworkCollection.create!(artwork: queen_elizabeth, collection: third_collection
 third_collection.save!
 
 john_wayne = Artwork.new(title: "John Wayne", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/30654744101_caf0081a42_b.jpg")
 john_wayne.photo.attach(io: file, filename: "john_wayne.jpg", content_type: "image/jpg")
 john_wayne.save!
@@ -378,7 +378,7 @@ ArtworkCollection.create!(artwork: john_wayne, collection: third_collection)
 third_collection.save!
 
 willie_nelson = Artwork.new(title: "Willie Nelson", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24104287706_c98434d43c_o.jpg")
 willie_nelson.photo.attach(io: file, filename: "willie_nelson.jpg", content_type: "image/jpg")
 willie_nelson.save!
@@ -386,7 +386,7 @@ ArtworkCollection.create!(artwork: willie_nelson, collection: third_collection)
 third_collection.save!
 
 lucille_ball = Artwork.new(title: "Lucille Ball", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23170900429_d3c8d76880_o.jpg")
 lucille_ball.photo.attach(io: file, filename: "lucille_ball.jpg", content_type: "image/jpg")
 lucille_ball.save!
@@ -394,7 +394,7 @@ ArtworkCollection.create!(artwork: lucille_ball, collection: third_collection)
 third_collection.save!
 
 maya_angalou = Artwork.new(title: "Maya Angelou", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23409051832_d85b322e08_o.jpg")
 maya_angalou.photo.attach(io: file, filename: "maya_angalou.jpg", content_type: "image/jpg")
 maya_angalou.save!
@@ -402,7 +402,7 @@ ArtworkCollection.create!(artwork: maya_angalou, collection: third_collection)
 third_collection.save!
 
 etta_james = Artwork.new(title: "Etta James", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24031912749_3fc6271e26_b.jpg")
 etta_james.photo.attach(io: file, filename: "etta_james.jpg", content_type: "image/jpg")
 etta_james.save!
@@ -410,7 +410,7 @@ ArtworkCollection.create!(artwork: etta_james, collection: third_collection)
 third_collection.save!
 
 andy_warhol = Artwork.new(title: "Andy Warhol", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/30654772691_63651f1edb_b.jpg")
 andy_warhol.photo.attach(io: file, filename: "andy_warhol.jpg", content_type: "image/jpg")
 andy_warhol.save!
@@ -418,7 +418,7 @@ ArtworkCollection.create!(artwork: andy_warhol, collection: third_collection)
 third_collection.save!
 
 sammy_davis_jr = Artwork.new(title: "Sammy Davis Jr", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/24536231466_213ee5e03b_b.jpg")
 sammy_davis_jr.photo.attach(io: file, filename: "sammy_davis_jr.jpg", content_type: "image/jpg")
 sammy_davis_jr.save!
@@ -426,7 +426,7 @@ ArtworkCollection.create!(artwork: sammy_davis_jr, collection: third_collection)
 third_collection.save!
 
 peace_love_buddha = Artwork.new(title: "Buddha", price: 4500, user: molly_b_right, medium: multimedia,
-  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 150, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/22890414673_6d5c32cfec_o.jpg")
 peace_love_buddha.photo.attach(io: file, filename: "peace_love_buddha.jpg", content_type: "image/jpg")
 peace_love_buddha.save!
@@ -434,7 +434,7 @@ ArtworkCollection.create!(artwork: peace_love_buddha, collection: third_collecti
 third_collection.save!
 
 albert_einstein = Artwork.new(title: "Albert Einstein", price: 5500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23517546625_936886a7cd_b.jpg")
 albert_einstein.photo.attach(io: file, filename: "albert_einstein.jpg", content_type: "image/jpg")
 albert_einstein.save!
@@ -442,7 +442,7 @@ ArtworkCollection.create!(artwork: albert_einstein, collection: third_collection
 third_collection.save!
 
 salvator_dali = Artwork.new(title: "Salvator Dali", price: 6000, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/22889248194_46ea1fc338_b.jpg")
 salvator_dali.photo.attach(io: file, filename: "salvator_dali.jpg", content_type: "image/jpg")
 salvator_dali.save!
@@ -450,7 +450,7 @@ ArtworkCollection.create!(artwork: salvator_dali, collection: third_collection)
 third_collection.save!
 
 magestic_baboon = Artwork.new(title: "Baboon", price: 6000, user: molly_b_right, medium: multimedia,
-  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 150, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23512438916_afdb544200_o.jpg")
 magestic_baboon.photo.attach(io: file, filename: "magestic_baboon.jpg", content_type: "image/jpg")
 magestic_baboon.save!
@@ -458,7 +458,7 @@ ArtworkCollection.create!(artwork: magestic_baboon, collection: third_collection
 third_collection.save!
 
 sitting_bull = Artwork.new(title: "Sitting Bull", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 250, width: 160, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 250, width: 160, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/30654637741_072041490b_b.jpg")
 sitting_bull.photo.attach(io: file, filename: "sitting_bull.jpg", content_type: "image/jpg")
 sitting_bull.save!
@@ -466,7 +466,7 @@ ArtworkCollection.create!(artwork: sitting_bull, collection: third_collection)
 third_collection.save!
 
 audrey_hepburn = Artwork.new(title: "Sitting Bull", price: 7500, user: molly_b_right, medium: multimedia,
-  height: 200, width: 130, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-03-28 23:59:59")
+  height: 200, width: 130, year: "2017-01-01", material: "Vintage bottlecap on metal", end_time: "2023-06-21 23:59:59")
 file = URI.open("https://mollybright.com/wp-content/uploads/2022/10/23491436716_a47b48a9ef_b.jpg")
 audrey_hepburn.photo.attach(io: file, filename: "audrey_hepburn.jpg", content_type: "image/jpg")
 audrey_hepburn.save!
