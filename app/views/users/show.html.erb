@@ -2,25 +2,23 @@
 <% content_for :meta_description, "Explore #{@user.first_name}'s artwork on the world's largest community of independent artists" %>
 <% content_for :meta_image, cl_image_path(@user.photo.key) %>
 
-<div class="user-profile-border">
-  <div class="flexbox">
-    <div>
-      <div class="user-profile-photo">
-        <% if @user.photo.attached? %>
-          <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
-        <% else %>
-          <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-large" %>
-        <% end %>
-      </div>
-      <% if @user.location.present? %>
-        <div class = user-profile-info>
-          <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @user.location %></p>
-          <p><%= @user.nationality %>, b. <%= @user.date_of_birth.strftime("%Y") %><p>
-          <p><%= @user.degree %></p>
-        </div>
+<div class="container">
+  <div class="row user-profile-border">
+    <div class="col-sm user-profile-photo">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, width: 800, height: 800, crop: :thumb, gravity: :face, class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "icon.svg", width: 1000, height: 1000, class: "avatar-large" %>
       <% end %>
+    <% if @user.location.present? %>
+      <div class="user-profile-info">
+        <p><i class="fa-sharp fa-solid fa-location-dot"></i> <%= @user.location %></p>
+        <p><%= @user.nationality %>, b. <%= @user.date_of_birth.strftime("%Y") %><p>
+        <p><%= @user.degree %></p>
+      </div>
+    <% end %>
     </div>
-    <div class="bio-container">
+    <div class="col-sm">
       <div class="bio-card">
         <h1><%= @user.first_name %> <%= @user.last_name %></h1>
         <p><%= @user.bio %></p>
