@@ -18,6 +18,14 @@
   min-height: 100vh;
 }
 
+@media(max-width: 768px) {
+  .page-margin {
+    margin: 24px;
+    padding-top: 40px;
+    min-height: 100vh;
+  }
+}
+
 a {
   text-decoration: none;
 }

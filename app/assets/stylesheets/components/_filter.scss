@@ -6,9 +6,9 @@
 
 .filter-parameter-container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .filter-row {
@@ -36,25 +36,7 @@
   margin-right: 8px;
 }
 
-#user_location {
-  border: 1px solid $artichoke-purple;
-  border-radius: 4px;
-  color: $artichoke-grey;
-  background-color: #f7f7f7;
-  padding: 0px 4px;
-  width: 160px
-}
-
-#price {
-  border: 1px solid $artichoke-purple;
-  border-radius: 4px;
-  color: $artichoke-grey;
-  background-color: #f7f7f7;
-  padding: 0px 4px;
-  width: 160px
-}
-
-#size {
+#user_location, #price, #size, #medium_ids {
   border: 1px solid $artichoke-purple;
   border-radius: 4px;
   color: $artichoke-grey;

@@ -57,8 +57,9 @@
 
 .artwork-column-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 24px;
+  flex-wrap: wrap;
 }
 
 .column-flex {

@@ -7,7 +7,7 @@
             <div class="<%= index == 0 ? "collection-card-big" : "collection-card-small" %>" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path collection.photo.key, crop: :fill %>')">
               <h2><%= collection.title %></h2>
               <div class="text-content">
-                <p class="lead" style="font-size:30px"><%= collection.description %></p>
+                <p><%= collection.description %></p>
               </div>
             </div>
           <% end %>
@@ -21,7 +21,7 @@
             <div class="<%=index == 0 ? "collection-card-small" : "collection-card-big" %>" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('<%= cl_image_path collection.photo.key, crop: :fill %>')">
               <h2><%= collection.title %></h2>
               <div class="text-content">
-                <p class="lead" style="font-size:30px"><%= collection.description %></p>
+                <p><%= collection.description %></p>
               </div>
             </div>
           <% end %>
